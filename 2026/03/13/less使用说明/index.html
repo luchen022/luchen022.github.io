@@ -7,22 +7,21 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="使用 Hexo 快速搭建个人博客Hexo中文文档Hexo 是一款基于 Node.js 的静态博客框架，轻量、高效，无需数据库，生成的静态页面加载速度快，非常适合搭建个人技术博客。本文将带你从 0 到 1 完成 Hexo 博客的搭建、自定义和部署。 一、环境准备安装Node js所需的版本请根据hexo的官网选择，一般来说，直接去官网安装最新版本的即可Node js中文官方网站    安装git如果">
+<meta name="description" content="Linux less 命令完全使用手册less 是 Linux 系统中最强大、最常用的文本分页查看工具，专为查看大文件设计（无需一次性加载整个文件，内存占用低），支持翻页、搜索、跳转、标记等功能，是替代 more 的首选工具。 一、基本用法1. 核心语法1less [选项] 文件名  2. 基础示例123456789# 查看单个文件less log.txt# 查看多个文件（按 :n 切下一个，:p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo建立个人博客">
-<meta property="og:url" content="http://example.com/2026/02/19/%E4%BD%BF%E7%94%A8hexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="linux使用less工具查看文档">
+<meta property="og:url" content="http://example.com/2026/03/13/less%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/index.html">
 <meta property="og:site_name" content="LC的博客">
-<meta property="og:description" content="使用 Hexo 快速搭建个人博客Hexo中文文档Hexo 是一款基于 Node.js 的静态博客框架，轻量、高效，无需数据库，生成的静态页面加载速度快，非常适合搭建个人技术博客。本文将带你从 0 到 1 完成 Hexo 博客的搭建、自定义和部署。 一、环境准备安装Node js所需的版本请根据hexo的官网选择，一般来说，直接去官网安装最新版本的即可Node js中文官方网站    安装git如果">
+<meta property="og:description" content="Linux less 命令完全使用手册less 是 Linux 系统中最强大、最常用的文本分页查看工具，专为查看大文件设计（无需一次性加载整个文件，内存占用低），支持翻页、搜索、跳转、标记等功能，是替代 more 的首选工具。 一、基本用法1. 核心语法1less [选项] 文件名  2. 基础示例123456789# 查看单个文件less log.txt# 查看多个文件（按 :n 切下一个，:p">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-02-19T07:24:54.000Z">
-<meta property="article:modified_time" content="2026-02-19T08:00:20.870Z">
+<meta property="article:published_time" content="2026-03-13T03:12:36.000Z">
+<meta property="article:modified_time" content="2026-03-15T10:44:03.639Z">
 <meta property="article:author" content="LC">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 
 
-<title >使用hexo建立个人博客</title>
+<title >linux使用less工具查看文档</title>
 
 <!-- Favicon -->
 
@@ -61,7 +60,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"LC","root":"/","typed_text":["计算机爱好者"],"theme_version":"2.2.7","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","apple_touch_icon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","show_text":"欢迎回来～","hide_text":"记得回来看看呀！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-02-19 16:00:20"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-15 18:44:03"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
@@ -237,7 +236,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            使用hexo建立个人博客
+                            linux使用less工具查看文档
                         </h1>
 
                         
@@ -370,13 +369,13 @@
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            02/19
+            03/13
         </div>
     </div>
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-clock trm-icon"></i><br>
-            15:24
+            11:12
         </div>
     </div>
     <div class="col-sm-4">
@@ -388,35 +387,178 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h1 id="使用-Hexo-快速搭建个人博客"><a href="#使用-Hexo-快速搭建个人博客" class="headerlink" title="使用 Hexo 快速搭建个人博客"></a>使用 Hexo 快速搭建个人博客</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/"><strong>Hexo中文文档</strong></a><br>Hexo 是一款基于 Node.js 的静态博客框架，轻量、高效，无需数据库，生成的静态页面加载速度快，非常适合搭建个人技术博客。本文将带你从 0 到 1 完成 Hexo 博客的搭建、自定义和部署。</p>
-<h2 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h2><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node js"></a>安装Node js</h3><p>所需的版本请根据hexo的官网选择，一般来说，直接去官网安装最新版本的即可<br><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn"><strong>Node js中文官方网站</strong></a>   </p>
-<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>如果您需要将自己的个人博客部署到GitHub让其他人能够访问呢，就需要安装<br><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git"><strong>git 安装教程中文版</strong></a></p>
-<h2 id="二、安装-Hexo-并初始化博客"><a href="#二、安装-Hexo-并初始化博客" class="headerlink" title="二、安装 Hexo 并初始化博客"></a>二、安装 Hexo 并初始化博客</h2><p>ps. 建议按照官方网站的教程进行安装，那里的教程始终是最新的   </p>
-<p>使用npm安装hexo-cli   </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+    <h1 id="Linux-less-命令完全使用手册"><a href="#Linux-less-命令完全使用手册" class="headerlink" title="Linux less 命令完全使用手册"></a>Linux less 命令完全使用手册</h1><p><code>less</code> 是 Linux 系统中<strong>最强大、最常用的文本分页查看工具</strong>，专为查看大文件设计（无需一次性加载整个文件，内存占用低），支持翻页、搜索、跳转、标记等功能，是替代 <code>more</code> 的首选工具。</p>
+<h2 id="一、基本用法"><a href="#一、基本用法" class="headerlink" title="一、基本用法"></a>一、基本用法</h2><h3 id="1-核心语法"><a href="#1-核心语法" class="headerlink" title="1. 核心语法"></a>1. 核心语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less [选项] 文件名</span><br></pre></td></tr></table></figure>
 
-<p>安装完hexo后，请选择一个文件夹作为自己博客项目的地址，在命令行进入该地址后，请执行下列命令   </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h3 id="2-基础示例"><a href="#2-基础示例" class="headerlink" title="2. 基础示例"></a>2. 基础示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看单个文件</span></span><br><span class="line">less log.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看多个文件（按 :n 切下一个，:p 切上一个）</span></span><br><span class="line">less file1.txt file2.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配合管道使用（查看命令输出的分页结果）</span></span><br><span class="line">ps -ef | less</span><br><span class="line"><span class="built_in">cat</span> large_file.txt | less</span><br></pre></td></tr></table></figure>
 
-<p>之后您会看到很多文件（夹），比较重要的是   </p>
-<ol>
-<li><code>_config.yml</code> 这是项目的配置文件，可以根据官方网站自行配置 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration"><strong>hexo 配置</strong></a>    </li>
-<li>scaffolds文件夹，这里存放的是模板文件，里面一般会修改<code>post.md</code>，这样下次新建新的文章的时候就会按照这里的模板创建新的文件。  </li>
-<li>source文件夹 资源文件夹。 是存放用户资源的地方。</li>
+<h2 id="二、核心操作（查看文件时的快捷键）"><a href="#二、核心操作（查看文件时的快捷键）" class="headerlink" title="二、核心操作（查看文件时的快捷键）"></a>二、核心操作（查看文件时的快捷键）</h2><h3 id="1-翻页-滚动"><a href="#1-翻页-滚动" class="headerlink" title="1. 翻页&#x2F;滚动"></a>1. 翻页&#x2F;滚动</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>向下翻一整页</td>
+</tr>
+<tr>
+<td>PageDown</td>
+<td>向下翻一整页（同空格键）</td>
+</tr>
+<tr>
+<td>PageUp</td>
+<td>向上翻一整页</td>
+</tr>
+<tr>
+<td>方向键↓</td>
+<td>向下翻一行</td>
+</tr>
+<tr>
+<td>方向键↑</td>
+<td>向上翻一行</td>
+</tr>
+<tr>
+<td>d</td>
+<td>向下翻半页</td>
+</tr>
+<tr>
+<td>u</td>
+<td>向上翻半页</td>
+</tr>
+<tr>
+<td>G</td>
+<td>跳转到文件末尾</td>
+</tr>
+<tr>
+<td>g</td>
+<td>跳转到文件开头</td>
+</tr>
+<tr>
+<td>数字+G</td>
+<td>跳转到指定行（如 10G 到第10行）</td>
+</tr>
+</tbody></table>
+<h3 id="2-搜索"><a href="#2-搜索" class="headerlink" title="2. 搜索"></a>2. 搜索</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;关键词</td>
+<td>向下搜索指定关键词（如 &#x2F;error 搜索错误）</td>
+</tr>
+<tr>
+<td>?关键词</td>
+<td>向上搜索指定关键词</td>
+</tr>
+<tr>
+<td>n</td>
+<td>跳转到下一个匹配结果</td>
+</tr>
+<tr>
+<td>N</td>
+<td>跳转到上一个匹配结果</td>
+</tr>
+<tr>
+<td>&amp;正则表达式</td>
+<td>只显示匹配正则的行（如 &amp;^debug 只看以debug开头的行）</td>
+</tr>
+</tbody></table>
+<h3 id="3-其他常用操作"><a href="#3-其他常用操作" class="headerlink" title="3. 其他常用操作"></a>3. 其他常用操作</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>q</td>
+<td>退出 less（最常用）</td>
+</tr>
+<tr>
+<td>v</td>
+<td>用系统默认编辑器（如 vim）打开当前文件（编辑后保存退出会回到 less）</td>
+</tr>
+<tr>
+<td>&#x3D;</td>
+<td>显示当前文件信息（行号、总行数、文件大小等）</td>
+</tr>
+<tr>
+<td>h</td>
+<td>查看 less 完整帮助文档</td>
+</tr>
+<tr>
+<td>:e 新文件名</td>
+<td>在 less 中打开另一个文件</td>
+</tr>
+<tr>
+<td>:n</td>
+<td>切换到下一个文件（多文件查看时）</td>
+</tr>
+<tr>
+<td>:p</td>
+<td>切换到上一个文件（多文件查看时）</td>
+</tr>
+</tbody></table>
+<h2 id="三、实用命令选项"><a href="#三、实用命令选项" class="headerlink" title="三、实用命令选项"></a>三、实用命令选项</h2><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-N</td>
+<td>显示行号</td>
+<td>less -N log.txt</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>搜索时忽略大小写</td>
+<td>less -i log.txt</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>禁用行换行（超长行不自动折行，按左右键查看）</td>
+<td>less -S large_log.txt</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>显示进度百分比（底部显示当前位置）</td>
+<td>less -m log.txt</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>如果文件内容少于一页，自动退出（无需按q）</td>
+<td>less -F small_file.txt</td>
+</tr>
+</tbody></table>
+<h2 id="四、高级技巧"><a href="#四、高级技巧" class="headerlink" title="四、高级技巧"></a>四、高级技巧</h2><h3 id="1-实时刷新文件（监控日志）"><a href="#1-实时刷新文件（监控日志）" class="headerlink" title="1. 实时刷新文件（监控日志）"></a>1. 实时刷新文件（监控日志）</h3><p><code>less</code> 可以替代 <code>tail -f</code> 监控实时更新的文件（如日志）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 用 less 打开日志文件</span></span><br><span class="line">less app.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 在 less 中按 F 键（大写），进入实时监控模式（类似 tail -f）</span></span><br><span class="line"><span class="comment"># 3. 按 Ctrl+C 退出监控模式，回到普通 less 查看状态</span></span><br><span class="line"><span class="comment"># 4. 按 q 退出 less</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-标记位置"><a href="#2-标记位置" class="headerlink" title="2. 标记位置"></a>2. 标记位置</h3><p>查看大文件时可标记关键位置，方便跳转：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 定位到关键行，按 m + 字母（如 ma），标记为 a</span></span><br><span class="line"><span class="comment"># 2. 按 &#x27; + 字母（如 &#x27;a），快速跳回标记 a 的位置</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-复制内容"><a href="#3-复制内容" class="headerlink" title="3. 复制内容"></a>3. 复制内容</h3><p>在 <code>less</code> 中复制内容需结合系统快捷键：</p>
+<ul>
+<li><strong>Linux 终端</strong>：选中内容 → 按 <code>Ctrl+Shift+C</code> 复制 → <code>Ctrl+Shift+V</code> 粘贴</li>
+<li><strong>macOS 终端</strong>：选中内容 → 按 <code>Cmd+C</code> 复制 → <code>Cmd+V</code> 粘贴</li>
+</ul>
+<h2 id="五、常见问题"><a href="#五、常见问题" class="headerlink" title="五、常见问题"></a>五、常见问题</h2><h3 id="1-less-打开文件后乱码？"><a href="#1-less-打开文件后乱码？" class="headerlink" title="1. less 打开文件后乱码？"></a>1. less 打开文件后乱码？</h3><p>解决：指定字符编码（如 UTF-8）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LESSCHARSET=utf-8 less file.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-如何退出-less？"><a href="#2-如何退出-less？" class="headerlink" title="2. 如何退出 less？"></a>2. 如何退出 less？</h3><p>直接按 <code>q</code> 键（最直接，无论处于什么状态，按 q 均可退出）。</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><code>less</code> 是 Linux 查看大文件的首选工具，核心优势是<strong>分页加载、支持搜索&#x2F;跳转、内存占用低</strong>；</li>
+<li>常用操作记住：<code>空格翻页</code>、<code>/关键词搜索</code>、<code>G/末尾</code>、<code>g/开头</code>、<code>q/退出</code>；</li>
+<li>监控日志可按 <code>F</code> 进入实时模式，替代 <code>tail -f</code>，灵活性更高。</li>
 </ol>
-<h2 id="使用hexo"><a href="#使用hexo" class="headerlink" title="使用hexo"></a>使用hexo</h2><p>大部分的命令可以有其他参数，详情可以访问<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commandsn"><strong>hexo 命令介绍</strong></a>   </p>
-<h3 id="new命令"><a href="#new命令" class="headerlink" title="new命令"></a>new命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>默认会生成一个新的文章。   </p>
-<h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-<p>生成静态文件。</p>
-<h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>启动服务器。 默认情况下，访问网址为： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>   </p>
-<h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>部署你的网站。需要先生成静态网站。</p>
-<h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>清除缓存以及删除静态文件。</p>
-<h2 id="主题以及部署"><a href="#主题以及部署" class="headerlink" title="主题以及部署"></a>主题以及部署</h2><p>部署到GitHub有官方的教程，主题一般也都有自己的使用教程，我使用的是 <a target="_blank" rel="noopener" href="https://hexo-theme-async.imalun.com/guide/">Async主题</a>  里面也有部署的教程，因此不细说。</p>
 
 </article>
     
@@ -434,28 +576,28 @@
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/02/20/%E6%96%B0%E6%89%8B%E7%A7%91%E7%A0%94%E5%85%A5%E9%97%A8/" class="trm-cover-frame trm-anima-link">
+        <a href="/2026/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E7%A0%94.png">
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
             
         </a>
         
         <div class="trm-card-descr">
             <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E7%A7%91%E7%A0%94/">
-                    科研
+                <a href=" #.">
+                    未分类
                 </a>
             </div>
             <h5>
-                <a href="/2026/02/20/%E6%96%B0%E6%89%8B%E7%A7%91%E7%A0%94%E5%85%A5%E9%97%A8/" class="trm-anima-link">
-                    新手科研入门
+                <a href="/2026/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" class="trm-anima-link">
+                    计算机书籍
                 </a>
             </h5>
             <div class="trm-divider trm-mb-20 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>26/02/20</li>
-                <li>18:10</li>
+                <li>26/03/16</li>
+                <li>17:11</li>
                 
                 
             </ul>
@@ -466,7 +608,7 @@
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2025/12/02/%E4%B8%80%E4%BA%9BCS%E7%AB%9E%E8%B5%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" class="trm-cover-frame trm-anima-link">
+        <a href="/2026/03/06/2026-0-06-01%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="trm-cover-frame trm-anima-link">
             
             
                 <img alt="cover" class="no-fancybox" src="/img/block.jpg">
@@ -475,19 +617,19 @@
         
         <div class="trm-card-descr">
             <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E7%AE%97%E6%B3%95/">
-                    算法
+                <a href=" /categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                    编译原理
                 </a>
             </div>
             <h5>
-                <a href="/2025/12/02/%E4%B8%80%E4%BA%9BCS%E7%AB%9E%E8%B5%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" class="trm-anima-link">
-                    一些CS竞赛知识点
+                <a href="/2026/03/06/2026-0-06-01%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="trm-anima-link">
+                    编译原理概述
                 </a>
             </h5>
             <div class="trm-divider trm-mb-20 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>25/12/02</li>
-                <li>19:08</li>
+                <li>26/03/06</li>
+                <li>16:13</li>
                 
                 
             </ul>
@@ -591,7 +733,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="使用 Hexo 快速搭建个人博客"><a rel="nofollow" class="trm-toc-link" href="#使用-Hexo-快速搭建个人博客"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">使用 Hexo 快速搭建个人博客</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="一、环境准备"><a rel="nofollow" class="trm-toc-link" href="#一、环境准备"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">一、环境准备</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="安装Node js"><a rel="nofollow" class="trm-toc-link" href="#安装Node-js"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">安装Node js</span></a></li><li class="trm-toc-item trm-toc-level-3" title="安装git"><a rel="nofollow" class="trm-toc-link" href="#安装git"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">安装git</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、安装 Hexo 并初始化博客"><a rel="nofollow" class="trm-toc-link" href="#二、安装-Hexo-并初始化博客"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">二、安装 Hexo 并初始化博客</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用hexo"><a rel="nofollow" class="trm-toc-link" href="#使用hexo"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">使用hexo</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="new命令"><a rel="nofollow" class="trm-toc-link" href="#new命令"><span class="trm-toc-number">1.3.1.</span> <span class="trm-toc-text">new命令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="generate"><a rel="nofollow" class="trm-toc-link" href="#generate"><span class="trm-toc-number">1.3.2.</span> <span class="trm-toc-text">generate</span></a></li><li class="trm-toc-item trm-toc-level-3" title="server"><a rel="nofollow" class="trm-toc-link" href="#server"><span class="trm-toc-number">1.3.3.</span> <span class="trm-toc-text">server</span></a></li><li class="trm-toc-item trm-toc-level-3" title="deploy"><a rel="nofollow" class="trm-toc-link" href="#deploy"><span class="trm-toc-number">1.3.4.</span> <span class="trm-toc-text">deploy</span></a></li><li class="trm-toc-item trm-toc-level-3" title="clean"><a rel="nofollow" class="trm-toc-link" href="#clean"><span class="trm-toc-number">1.3.5.</span> <span class="trm-toc-text">clean</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="主题以及部署"><a rel="nofollow" class="trm-toc-link" href="#主题以及部署"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">主题以及部署</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="Linux less 命令完全使用手册"><a rel="nofollow" class="trm-toc-link" href="#Linux-less-命令完全使用手册"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Linux less 命令完全使用手册</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="一、基本用法"><a rel="nofollow" class="trm-toc-link" href="#一、基本用法"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">一、基本用法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 核心语法"><a rel="nofollow" class="trm-toc-link" href="#1-核心语法"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">1. 核心语法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 基础示例"><a rel="nofollow" class="trm-toc-link" href="#2-基础示例"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">2. 基础示例</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、核心操作（查看文件时的快捷键）"><a rel="nofollow" class="trm-toc-link" href="#二、核心操作（查看文件时的快捷键）"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">二、核心操作（查看文件时的快捷键）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 翻页&#x2F;滚动"><a rel="nofollow" class="trm-toc-link" href="#1-翻页-滚动"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">1. 翻页&#x2F;滚动</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 搜索"><a rel="nofollow" class="trm-toc-link" href="#2-搜索"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">2. 搜索</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 其他常用操作"><a rel="nofollow" class="trm-toc-link" href="#3-其他常用操作"><span class="trm-toc-number">1.2.3.</span> <span class="trm-toc-text">3. 其他常用操作</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、实用命令选项"><a rel="nofollow" class="trm-toc-link" href="#三、实用命令选项"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">三、实用命令选项</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、高级技巧"><a rel="nofollow" class="trm-toc-link" href="#四、高级技巧"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">四、高级技巧</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 实时刷新文件（监控日志）"><a rel="nofollow" class="trm-toc-link" href="#1-实时刷新文件（监控日志）"><span class="trm-toc-number">1.4.1.</span> <span class="trm-toc-text">1. 实时刷新文件（监控日志）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 标记位置"><a rel="nofollow" class="trm-toc-link" href="#2-标记位置"><span class="trm-toc-number">1.4.2.</span> <span class="trm-toc-text">2. 标记位置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 复制内容"><a rel="nofollow" class="trm-toc-link" href="#3-复制内容"><span class="trm-toc-number">1.4.3.</span> <span class="trm-toc-text">3. 复制内容</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="五、常见问题"><a rel="nofollow" class="trm-toc-link" href="#五、常见问题"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">五、常见问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. less 打开文件后乱码？"><a rel="nofollow" class="trm-toc-link" href="#1-less-打开文件后乱码？"><span class="trm-toc-number">1.5.1.</span> <span class="trm-toc-text">1. less 打开文件后乱码？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 如何退出 less？"><a rel="nofollow" class="trm-toc-link" href="#2-如何退出-less？"><span class="trm-toc-number">1.5.2.</span> <span class="trm-toc-text">2. 如何退出 less？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="总结"><a rel="nofollow" class="trm-toc-link" href="#总结"><span class="trm-toc-number">1.5.3.</span> <span class="trm-toc-text">总结</span></a></li></ol></li></ol></li></ol>
       </div>
     </div>
 
