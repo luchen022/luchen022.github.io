@@ -7,16 +7,21 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LC的博客">
-<meta property="og:url" content="http://example.com/tags/ssh/index.html">
+<meta name="description" content="一、 什么是 RNN？RNN 的全称是 Recurrent Neural Network（循环神经网络），是一种专门处理序列数据的神经网络。   普通的神经网络（比如 CNN、全连接网络）是无状态的：输入数据是独立的，模型不会记住上一个输入的信息。 RNN 是有状态的：它会把上一个时刻的输出（或隐藏状态）作为下一个时刻的输入，从而捕捉序列的先后依赖关系。  二、 RNN 的核心结构RNN 的基本单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RNN">
+<meta property="og:url" content="http://example.com/2026/03/23/RNN/index.html">
 <meta property="og:site_name" content="LC的博客">
+<meta property="og:description" content="一、 什么是 RNN？RNN 的全称是 Recurrent Neural Network（循环神经网络），是一种专门处理序列数据的神经网络。   普通的神经网络（比如 CNN、全连接网络）是无状态的：输入数据是独立的，模型不会记住上一个输入的信息。 RNN 是有状态的：它会把上一个时刻的输出（或隐藏状态）作为下一个时刻的输入，从而捕捉序列的先后依赖关系。  二、 RNN 的核心结构RNN 的基本单">
 <meta property="og:locale">
+<meta property="article:published_time" content="2026-03-23T09:51:59.000Z">
+<meta property="article:modified_time" content="2026-03-23T09:55:28.637Z">
 <meta property="article:author" content="LC">
+<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
 
 
-<title >LC的博客</title>
+<title >RNN</title>
 
 <!-- Favicon -->
 
@@ -55,7 +60,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"LC","root":"/","typed_text":["计算机爱好者"],"theme_version":"2.2.7","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","apple_touch_icon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","show_text":"欢迎回来～","hide_text":"记得回来看看呀！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-03-23 17:56:43"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-23 17:55:28"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
@@ -207,7 +212,6 @@
 
             <!-- body -->
             
-
 <div class="trm-content-start">
     <!-- banner -->
     <div class="trm-banner">
@@ -229,10 +233,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            The article archive
+                            NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            云间连下榻，<br>天上接行杯。
+                            RNN
                         </h1>
 
                         
@@ -242,7 +246,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        tags
+                                        2026
                                     </span>
                                 </li>
                             </ul>
@@ -361,73 +365,192 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list" itemprop="keywords"><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">2</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E8%A7%86%E9%A2%91%E6%80%BB%E7%BB%93/" rel="tag">哔哩哔哩视频总结</a><span class="tag-list-count">3</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">程序设计</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AD%A6/" rel="tag">自学</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a><span class="tag-list-count">2</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/23
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            17:51
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            LC
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h3 id="一、-什么是-RNN？"><a href="#一、-什么是-RNN？" class="headerlink" title="一、 什么是 RNN？"></a>一、 什么是 RNN？</h3><p>RNN 的全称是 <strong>Recurrent Neural Network（循环神经网络）</strong>，是一种专门处理<strong>序列数据</strong>的神经网络。 </p>
+<ul>
+<li>普通的神经网络（比如 CNN、全连接网络）是<strong>无状态</strong>的：输入数据是独立的，模型不会记住上一个输入的信息。</li>
+<li>RNN 是<strong>有状态</strong>的：它会把上一个时刻的输出（或隐藏状态）作为下一个时刻的输入，从而捕捉序列的先后依赖关系。</li>
+</ul>
+<h3 id="二、-RNN-的核心结构"><a href="#二、-RNN-的核心结构" class="headerlink" title="二、 RNN 的核心结构"></a>二、 RNN 的核心结构</h3><p>RNN 的基本单元是<strong>循环核</strong>，核心是<strong>隐藏状态 $h_t$</strong>（可以理解为模型的“短期记忆”）。<br>它的计算流程分为两步，以处理序列 $x_1, x_2, …, x_t$ 为例： </p>
+<ol>
+<li><strong>计算当前时刻的隐藏状态 $h_t$</strong> 隐藏状态由<strong>当前输入 $x_t$</strong> 和<strong>上一时刻的隐藏状态 $h_{t-1}$</strong> 共同决定，公式如下： $$h_t &#x3D; tanh(W_h \cdot [h_{t-1}, x_t] + b_h)$$<ul>
+<li>$W_h$ 和 $b_h$ 是模型的可学习参数，在整个序列处理过程中<strong>共享</strong>（这是 RNN 的关键，参数量不会随序列长度增加）；</li>
+<li>$tanh$ 是激活函数，将输出值缩放到 $[-1, 1]$ 之间，防止数值爆炸。</li>
+</ul>
+</li>
+<li><strong>计算当前时刻的输出 $y_t$</strong> 输出由当前的隐藏状态 $h_t$ 决定，公式如下： $$y_t &#x3D; W_y \cdot h_t + b_y$$<ul>
+<li>$W_y$ 和 $b_y$ 也是共享参数。 这个过程会沿着序列<strong>循环执行</strong>，直到处理完所有时刻的输入。</li>
+</ul>
+</li>
+</ol>
+<h3 id="三、-RNN-的直观例子"><a href="#三、-RNN-的直观例子" class="headerlink" title="三、 RNN 的直观例子"></a>三、 RNN 的直观例子</h3><p>用 RNN 处理一句话 <em>“我 喜欢 吃 苹果”</em>：</p>
+<ul>
+<li>时刻 $t&#x3D;1$：输入 $x_1&#x3D;$“我”，此时没有历史隐藏状态，通常初始化 $h_0&#x3D;0$，计算出 $h_1$ 和 $y_1$； </li>
+<li>时刻 $t&#x3D;2$：输入 $x_2&#x3D;$“喜欢”，结合 $h_1$ 计算 $h_2$ 和 $y_2$，模型此时知道“喜欢”的主语是“我”；</li>
+<li>时刻 $t&#x3D;3$：输入 $x_3&#x3D;$“吃”，结合 $h_2$ 计算 $h_3$，模型记住“我喜欢吃”； </li>
+<li>时刻 $t&#x3D;4$：输入 $x_4&#x3D;$“苹果”，结合 $h_3$ 计算最终输出，模型能理解整个句子的语义。</li>
+</ul>
+<h3 id="四、-RNN-的核心问题"><a href="#四、-RNN-的核心问题" class="headerlink" title="四、 RNN 的核心问题"></a>四、 RNN 的核心问题</h3><p>梯度消失&#x2F;爆炸<br>这是 RNN 最致命的缺陷，也是 LSTM 诞生的原因： 在训练 RNN 时，需要通过<strong>反向传播</strong>更新参数，而反向传播的梯度需要沿着序列的时间轴传递（即“沿时间反向传播”，BPTT）。</p>
+<ol>
+<li><strong>梯度消失</strong> 当序列很长时（比如超过 50 步），梯度在传递过程中会<strong>指数级衰减</strong>，导致模型无法学习到早期时刻的信息。 例子：用 RNN 处理长句 <em>“昨天我去了超市，买了面包、牛奶和鸡蛋，晚上我用____做了晚餐”</em>，RNN 会忘记“面包、牛奶和鸡蛋”这些早期信息，无法填出正确答案。 </li>
+<li><strong>梯度爆炸</strong> 少数情况下，梯度会<strong>指数级膨胀</strong>，导致参数更新过大，模型训练崩溃。 可以通过“梯度裁剪”缓解，但无法解决梯度消失的核心问题。</li>
+</ol>
+<h3 id="五、-RNN-的适用场景"><a href="#五、-RNN-的适用场景" class="headerlink" title="五、 RNN 的适用场景"></a>五、 RNN 的适用场景</h3><p>正因为梯度消失问题，RNN 只适合处理<strong>短序列数据</strong>： - 短文本分类（比如句子级情感分析）； </p>
+<ul>
+<li>简单的时间序列预测（比如几步内的温度预测）； </li>
+<li>字符级文本生成（短文本）。</li>
+</ul>
+<h3 id="总结：RNN-与-LSTM-的关系"><a href="#总结：RNN-与-LSTM-的关系" class="headerlink" title="总结：RNN 与 LSTM 的关系"></a>总结：RNN 与 LSTM 的关系</h3><ul>
+<li><strong>RNN</strong>：提出了“循环记忆”的核心思想，但无法处理长序列的长期依赖； </li>
+<li><strong>LSTM</strong>：继承了 RNN 的循环结构，通过<strong>门控机制</strong>和<strong>细胞状态</strong>，解决了梯度消失问题，能够捕捉长序列的长期依赖。</li>
+</ul>
+<p><a href="./2026-03-23-tanh%E5%87%BD%E6%95%B0.md">tanh</a></p>
 
-<!-- history -->
+</article>
+    
+    
 
-<div class="row">
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                ssh
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2026/03/23/tanh%E5%87%BD%E6%95%B0/" class="trm-cover-frame trm-anima-link">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2026/02/21/ssh%E9%85%8D%E7%BD%AE%E4%BB%85%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95/" class="trm-anima-link">
-                                        ssh配置仅密钥登录
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">02/21</li>
-                                        <li class="trm-accent-color">09:37</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" #.">
+                    未分类
+                </a>
             </div>
-            
+            <h5>
+                <a href="/2026/03/23/tanh%E5%87%BD%E6%95%B0/" class="trm-anima-link">
+                    tanh函数
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/03/23</li>
+                <li>17:52</li>
+                
+                
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
-
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2026/03/18/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AF%BC%E8%AE%BA00%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AF%BC%E8%AE%BA/">
+                    计算理论导论
+                </a>
+            </div>
+            <h5>
+                <a href="/2026/03/18/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AF%BC%E8%AE%BA00%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D/" class="trm-anima-link">
+                    计算理论导论00课程介绍
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/03/18</li>
+                <li>16:13</li>
+                
+                
+            </ul>
+        </div>
     </div>
+</div>
+    
+</div>
 
+    
 
+    <div id="giscus-wrap" class="trm-card trm-scroll-animation comment-container"></div>
+<script data-swup-reload-script>
+    function loadGiscus() {
+        let nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const config = {
+            src: 'https://giscus.app/client.js',
+            "data-repo": 'luchen022/luchen022.github.io',
+            "data-repo-id": 'R_kgDORTg4kg',
+            "data-category": 'Announcements',
+            "data-category-id": 'DIC_kwDORTg4ks4C223u',
+            "data-mapping": 'title',
+            "data-reactions-enabled": '1',
+            "data-emit-metadata": '0',
+            "data-theme": nowTheme,
+            "data-lang": 'zh-CN',
+            crossorigin: "anonymous",
+            async: true
+        }
+        let ele = document.createElement('script')
+        for (let key in config) {
+            ele.setAttribute(key, config[key])
+        }
+        document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin', ele)
+    }
+
+    function changeGiscusTheme() {
+        let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+            setConfig: {
+                theme: theme
+            }
+        });
+    }
+
+    loadGiscus();
+</script>
 
 
 
@@ -469,9 +592,29 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="一、 什么是 RNN？"><a rel="nofollow" class="trm-toc-link" href="#一、-什么是-RNN？"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一、 什么是 RNN？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="二、 RNN 的核心结构"><a rel="nofollow" class="trm-toc-link" href="#二、-RNN-的核心结构"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、 RNN 的核心结构</span></a></li><li class="trm-toc-item trm-toc-level-3" title="三、 RNN 的直观例子"><a rel="nofollow" class="trm-toc-link" href="#三、-RNN-的直观例子"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">三、 RNN 的直观例子</span></a></li><li class="trm-toc-item trm-toc-level-3" title="四、 RNN 的核心问题"><a rel="nofollow" class="trm-toc-link" href="#四、-RNN-的核心问题"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">四、 RNN 的核心问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="五、 RNN 的适用场景"><a rel="nofollow" class="trm-toc-link" href="#五、-RNN-的适用场景"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">五、 RNN 的适用场景</span></a></li><li class="trm-toc-item trm-toc-level-3" title="总结：RNN 与 LSTM 的关系"><a rel="nofollow" class="trm-toc-link" href="#总结：RNN-与-LSTM-的关系"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">总结：RNN 与 LSTM 的关系</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
     
     
     <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
@@ -548,6 +691,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		
