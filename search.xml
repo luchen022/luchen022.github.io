@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>CARA论文</title>
+      <link href="/2026/03/27/CARA%E8%AE%BA%E6%96%87/"/>
+      <url>/2026/03/27/CARA%E8%AE%BA%E6%96%87/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CaRA-论文完整复习总结"><a href="#CaRA-论文完整复习总结" class="headerlink" title="CaRA 论文完整复习总结"></a>CaRA 论文完整复习总结</h1><h2 id="一、解决的核心问题"><a href="#一、解决的核心问题" class="headerlink" title="一、解决的核心问题"></a>一、解决的核心问题</h2><p>零样本细粒度检索中，CNN 模型<strong>只关注最显著区域</strong>（鸟头、车头、Logo），激活值过高掩盖周边细微特征，导致对<strong>没见过的新类别</strong>泛化差。<br>传统方案：</p><ul><li>人工标注部位 → 成本高、不通用</li><li>多任务集成 → 结构复杂、开销大</li></ul><p>本文目标：<strong>不额外标注、不加复杂结构，仅通过通道级抑制，让模型关注更多细节，同时不丢失判别力</strong>。</p><hr><h2 id="二、基础模型与基本概念"><a href="#二、基础模型与基本概念" class="headerlink" title="二、基础模型与基本概念"></a>二、基础模型与基本概念</h2><ol><li><strong>基础网络</strong><br>CNN（ResNet50）</li><li><strong>特征图结构</strong><br><code>C × H × W</code><ul><li>C：通道数（每个通道≈一种特征检测器）</li><li>H×W：空间大小</li></ul></li><li><strong>激活值</strong><br>卷积 + 偏置 + ReLU 之后的<strong>每个像素数值</strong><ul><li>数值大 → 模型关注这里</li><li>过大 → 显著区垄断注意力</li></ul></li></ol><hr><h2 id="三、核心模块：CARP"><a href="#三、核心模块：CARP" class="headerlink" title="三、核心模块：CARP"></a>三、核心模块：CARP</h2><h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1. 作用"></a>1. 作用</h3><p>给每个通道设置<strong>无损激活上限</strong>，只压过高的显著激活，不破坏语义，把注意力分给周边区域。</p><h3 id="2-CARP-计算步骤"><a href="#2-CARP-计算步骤" class="headerlink" title="2. CARP 计算步骤"></a>2. CARP 计算步骤</h3><h4 id="（1）高斯平滑全局最大池化（得到原始峰值-P）"><a href="#（1）高斯平滑全局最大池化（得到原始峰值-P）" class="headerlink" title="（1）高斯平滑全局最大池化（得到原始峰值 P）"></a>（1）高斯平滑全局最大池化（得到原始峰值 P）</h4><ul><li>对每个通道特征图先做<strong>高斯平滑（去噪）</strong></li><li>再做<strong>全局最大池化（取该通道最大激活）</strong></li><li>得到通道峰值向量：<code>P ∈ R^C</code><br>→ P 代表每个通道<strong>原本的显著强度</strong></li></ul><h4 id="（2）抑制系数预测"><a href="#（2）抑制系数预测" class="headerlink" title="（2）抑制系数预测"></a>（2）抑制系数预测</h4><ul><li>对特征图做<strong>全局平均池化</strong>得到通道均值</li><li>经过一个<strong>可学习 C×C 全连接矩阵</strong></li><li>过 sigmoid 得到<strong>抑制系数 S ∈ (0,1)^C</strong></li><li>训练时<strong>只学习这个 C×C 矩阵</strong></li></ul><h4 id="（3）得到-CARP"><a href="#（3）得到-CARP" class="headerlink" title="（3）得到 CARP"></a>（3）得到 CARP</h4><p>$\text{CARP} &#x3D; P \odot S$</p><ul><li>CARP 是<strong>每个通道的激活上限</strong></li><li>只压过高通道，不压有用弱通道</li></ul><hr><h2 id="四、特征校正"><a href="#四、特征校正" class="headerlink" title="四、特征校正"></a>四、特征校正</h2><ol><li><p><strong>原始特征 Z</strong></p><p>CNN 最后一层 ReLU 后的特征图：<code>Z ∈ R^{C×H×W}</code></p></li><li><p><strong>校正后特征 F’</strong><br>对 Z 逐通道逐位置裁剪：</p></li></ol><p>$F’<em>{c,i,j} &#x3D; \min(Z</em>{c,i,j},\text{CARP}_c)$</p><ul><li>大于上限 → 裁到 CARP</li><li>小于等于 → 保持不变</li></ul><ol start="3"><li><strong>最终检索特征</strong><br>对 F’ 做 GAP 得到一维向量，用于距离计算。</li></ol><hr><h2 id="五、五大损失函数（训练约束）"><a href="#五、五大损失函数（训练约束）" class="headerlink" title="五、五大损失函数（训练约束）"></a>五、五大损失函数（训练约束）</h2><p>总损失：</p><p>$$L_{total} &#x3D; L_{cls} + L_{triplet} + L_{mut} + L_{ssc} + L_{fng}$$</p><h3 id="1-分类损失-L-cls"><a href="#1-分类损失-L-cls" class="headerlink" title="1. 分类损失 $L_{cls}$"></a>1. 分类损失 $L_{cls}$</h3><ul><li>输入：校正特征 F’</li><li>操作：GAP → FC 层 → 分类概率</li><li>计算：交叉熵</li><li>作用：让特征具备基础类别判别能力。</li></ul><h3 id="2-三元组损失-L-triplet"><a href="#2-三元组损失-L-triplet" class="headerlink" title="2. 三元组损失 $L_{triplet}$"></a>2. 三元组损失 $L_{triplet}$</h3><ul><li>样本：锚点 a、同类正样本 p、异类负样本 n</li><li>特征：都用 <strong>F’ 池化后的向量</strong></li><li>目标：$dist(a,p) &lt; dist(a,n)$</li><li>作用：保证<strong>同类近、异类远</strong>，适配检索任务。</li></ul><h3 id="3-互学习损失-L-mut"><a href="#3-互学习损失-L-mut" class="headerlink" title="3. 互学习损失 $L_{mut}$"></a>3. 互学习损失 $L_{mut}$</h3><ul><li>两个输入：<ul><li>原始通道峰值 P</li><li>校正上限 CARP</li></ul></li><li>各加一个小线性分类头</li><li>计算：KL 散度拉近两个分类分布</li><li>作用：保证<strong>压后通道重要性不变，语义不丢失</strong>。</li></ul><h3 id="4-语义一致性损失-L-ssc"><a href="#4-语义一致性损失-L-ssc" class="headerlink" title="4. 语义一致性损失 $L_{ssc}$"></a>4. 语义一致性损失 $L_{ssc}$</h3><ul><li>两个输入：<ul><li>原始特征 Z</li><li>校正特征 F’</li></ul></li><li>用<strong>同一个 FC</strong>得到分类概率</li><li>计算：KL 散度拉近分布</li><li>作用：保证 Z 和 F’ <strong>语义等价</strong>，压完不跑偏。</li></ul><h3 id="5-特征导航损失-L-fng"><a href="#5-特征导航损失-L-fng" class="headerlink" title="5. 特征导航损失 $L_{fng}$"></a>5. 特征导航损失 $L_{fng}$</h3><ul><li>输入：Z 和 F’ 经同一 FC 的分类得分</li><li>约束：$Score_{new} \ge Score_{old}$</li><li>作用：<strong>防止压太狠导致特征判别力下降</strong>。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 论文 </tag>
+            
+            <tag> 科研 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Action-Aware Embedding Enhancement for Image-Text Retrieval总结</title>
       <link href="/2026/03/27/Retrieval%E6%80%BB%E7%BB%93/"/>
       <url>/2026/03/27/Retrieval%E6%80%BB%E7%BB%93/</url>
