@@ -7,20 +7,20 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="GRU（Gated Recurrent Unit） 是2014年由Cho等人提出的RNN变体，核心是在保留LSTM解决长依赖能力的同时，大幅简化结构、减少参数、提升训练效率，是序列建模中最常用的轻量级模型之一。 一、背景与核心动机传统RNN处理长序列时易出现梯度消失&#x2F;爆炸（信息随时间步指数衰减），LSTM通过输入门、遗忘门、输出门+细胞状态解决该问题，但存在参数多、计算复杂、训练慢的缺陷">
+<meta name="description" content="一、论文基础信息 论文标题：KERM: Knowledge Enhanced Reasoning for Vision-and-Language Navigation 会议：CVPR 2023（IEEE&#x2F;CVF Conference on Computer Vision and Pattern Recognition，计算机视觉顶会） 发表时间：2023年6月（arXiv预印本：2023">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GRU门控循环单元">
-<meta property="og:url" content="http://example.com/2026/03/29/GRU%E9%97%A8%E6%8E%A7%E5%BE%AA%E7%8E%AF%E5%8D%95%E5%85%83/index.html">
+<meta property="og:title" content="基于知识增强的视觉语言导航">
+<meta property="og:url" content="http://example.com/2026/03/30/%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%BC%BA%E7%9A%84%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%AF%BC%E8%88%AA/index.html">
 <meta property="og:site_name" content="LC的博客">
-<meta property="og:description" content="GRU（Gated Recurrent Unit） 是2014年由Cho等人提出的RNN变体，核心是在保留LSTM解决长依赖能力的同时，大幅简化结构、减少参数、提升训练效率，是序列建模中最常用的轻量级模型之一。 一、背景与核心动机传统RNN处理长序列时易出现梯度消失&#x2F;爆炸（信息随时间步指数衰减），LSTM通过输入门、遗忘门、输出门+细胞状态解决该问题，但存在参数多、计算复杂、训练慢的缺陷">
+<meta property="og:description" content="一、论文基础信息 论文标题：KERM: Knowledge Enhanced Reasoning for Vision-and-Language Navigation 会议：CVPR 2023（IEEE&#x2F;CVF Conference on Computer Vision and Pattern Recognition，计算机视觉顶会） 发表时间：2023年6月（arXiv预印本：2023">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-03-29T04:06:18.000Z">
-<meta property="article:modified_time" content="2026-03-29T04:10:57.505Z">
+<meta property="article:published_time" content="2026-03-30T06:40:08.000Z">
+<meta property="article:modified_time" content="2026-03-30T06:46:03.620Z">
 <meta property="article:author" content="LC">
 <meta name="twitter:card" content="summary">
 
 
-<title >GRU门控循环单元</title>
+<title >基于知识增强的视觉语言导航</title>
 
 <!-- Favicon -->
 
@@ -61,7 +61,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"LC","root":"/","typed_text":["计算机爱好者"],"theme_version":"2.2.7","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","apple_touch_icon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","show_text":"欢迎回来～","hide_text":"记得回来看看呀！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-29 12:10:57"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-30 14:46:03"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
@@ -237,7 +237,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            GRU门控循环单元
+                            基于知识增强的视觉语言导航
                         </h1>
 
                         
@@ -370,13 +370,13 @@
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            03/29
+            03/30
         </div>
     </div>
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-clock trm-icon"></i><br>
-            12:06
+            14:40
         </div>
     </div>
     <div class="col-sm-4">
@@ -388,125 +388,128 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <p><strong>GRU（Gated Recurrent Unit）</strong> 是2014年由Cho等人提出的<strong>RNN变体</strong>，核心是在保留LSTM解决长依赖能力的同时，大幅简化结构、减少参数、提升训练效率，是序列建模中最常用的轻量级模型之一。</p>
-<h2 id="一、背景与核心动机"><a href="#一、背景与核心动机" class="headerlink" title="一、背景与核心动机"></a>一、背景与核心动机</h2><p>传统RNN处理长序列时易出现<strong>梯度消失&#x2F;爆炸</strong>（信息随时间步指数衰减），LSTM通过<strong>输入门、遗忘门、输出门+细胞状态</strong>解决该问题，但存在<strong>参数多、计算复杂、训练慢</strong>的缺陷。GRU的核心设计目标：</p>
+    <h2 id="一、论文基础信息"><a href="#一、论文基础信息" class="headerlink" title="一、论文基础信息"></a>一、论文基础信息</h2><ul>
+<li>论文标题：<strong>KERM: Knowledge Enhanced Reasoning for Vision-and-Language Navigation</strong></li>
+<li>会议：<strong>CVPR 2023</strong>（IEEE&#x2F;CVF Conference on Computer Vision and Pattern Recognition，计算机视觉顶会）</li>
+<li>发表时间：2023年6月（arXiv预印本：2023年3月28日）</li>
+<li>作者：Xiangyang Li, Zihan Wang, Jiahao Yang, Yaowei Wang, Shuqiang Jiang</li>
+<li>单位：<ol>
+<li>中科院智能信息处理重点实验室、计算所</li>
+<li>中国科学院大学</li>
+<li>鹏城实验室</li>
+</ol>
+</li>
+<li>项目地址：<a target="_blank" rel="noopener" href="https://github.com/XiangyangLi20/KERM">https://github.com/XiangyangLi20/KERM</a></li>
+<li>核心领域：<strong>Vision-and-Language Navigation（VLN，具身智能·视觉语言导航）</strong></li>
+<li>核心创新：<strong>首次将区域级文本事实知识融入VLN，用提纯-交互-聚合三模块做知识增强推理</strong></li>
+</ul>
+<hr>
+<h2 id="二、研究背景与问题"><a href="#二、研究背景与问题" class="headerlink" title="二、研究背景与问题"></a>二、研究背景与问题</h2><h3 id="1-任务定义"><a href="#1-任务定义" class="headerlink" title="1. 任务定义"></a>1. 任务定义</h3><p>VLN：智能体根据自然语言指令，在真实室内3D环境中导航到目标位置，需理解语言、感知视觉、做出动作决策。</p>
+<h3 id="2-现有方法缺陷"><a href="#2-现有方法缺陷" class="headerlink" title="2. 现有方法缺陷"></a>2. 现有方法缺陷</h3><ul>
+<li>仅用<strong>全局图像特征</strong>或<strong>物体标签</strong>，语义信息不足</li>
+<li>相似场景&#x2F;相似物体难以区分，易走错方向</li>
+<li>未见环境泛化能力差</li>
+<li>缺乏人类导航时依赖的<strong>常识、属性、关系</strong>等外部知识</li>
+</ul>
+<h3 id="3-本文核心动机"><a href="#3-本文核心动机" class="headerlink" title="3. 本文核心动机"></a>3. 本文核心动机</h3><p><strong>知识是视觉信息的关键补充</strong>，能帮助智能体区分相似候选、提升泛化、增强跨模态对齐。</p>
+<hr>
+<h2 id="三、整体方案总览"><a href="#三、整体方案总览" class="headerlink" title="三、整体方案总览"></a>三、整体方案总览</h2><ol>
+<li>构建知识库：从Visual Genome抽取<strong>63万条文本事实</strong>（属性对、关系三元组）</li>
+<li>事实检索：将视图<strong>规则切为5个区域</strong>，用CLIP做图像-文本向量匹配，每个区域取Top-5事实，共<strong>25条fact</strong></li>
+<li>知识增强推理（KERM三模块）：<ul>
+<li>Purification：按指令加权过滤知识、视觉、历史</li>
+<li>Fact-aware Interaction：视觉-知识、历史-知识跨模态融合</li>
+<li>Instruction-guided Aggregation：按指令聚合特征，输出给导航模型</li>
+</ul>
+</li>
+<li>导航预测：接入<strong>DUET双尺度图Transformer</strong>做动作预测</li>
+</ol>
+<hr>
+<h2 id="四、技术细节"><a href="#四、技术细节" class="headerlink" title="四、技术细节"></a>四、技术细节</h2><h3 id="1-知识库构建与事实获取"><a href="#1-知识库构建与事实获取" class="headerlink" title="1. 知识库构建与事实获取"></a>1. 知识库构建与事实获取</h3><ul>
+<li>来源：Visual Genome数据集</li>
+<li>事实类型：<ul>
+<li>属性：<attribute-object>（red sofa）</li>
+<li>关系：<subject-predicate-object>（lamp hanging over island）</li>
+</ul>
+</li>
+<li>规模：去重后共<strong>630K条文本事实</strong></li>
+<li>检索方式：<ul>
+<li>视图→规则切5块→CLIP图像编码器→图像向量</li>
+<li>事实→CLIP文本编码器→文本向量库</li>
+<li>余弦相似度→每个区域Top-5→单视图共25条fact</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-KERM三大核心模块"><a href="#2-KERM三大核心模块" class="headerlink" title="2. KERM三大核心模块"></a>2. KERM三大核心模块</h3><h4 id="（1）Purification-提纯模块"><a href="#（1）Purification-提纯模块" class="headerlink" title="（1）Purification 提纯模块"></a>（1）Purification 提纯模块</h4><ul>
+<li>输入：fact特征Eₙ、视觉区域Rₙ、历史Hₙ、指令L</li>
+<li>计算fact-instruction相关性矩阵：$A&#x3D;\frac{(E_n W_1)(L W_2)^T}{\sqrt{d}}$</li>
+<li>行最大池化得到每条fact权重αₙ：$\alpha_n &#x3D; \max{A_{n,i}}$</li>
+<li>加权得到提纯特征：$E_n’ &#x3D; \alpha_n \odot E_n$</li>
+<li>视觉、历史做相同提纯</li>
+<li>作用：<strong>弱化无关知识，保留与指令相关的关键信息</strong></li>
+</ul>
+<h4 id="（2）Fact-aware-Interaction-交互模块"><a href="#（2）Fact-aware-Interaction-交互模块" class="headerlink" title="（2）Fact-aware Interaction 交互模块"></a>（2）Fact-aware Interaction 交互模块</h4><ul>
+<li><p>结构：<strong>2层跨模态Transformer</strong>（CrossAttention + SelfAttention）</p>
+</li>
+<li><p>视觉-知识交互：<br>$$\tilde{R}_n &#x3D; \text{CrossAttn}(R_n’, E_n’)$$</p>
+<p>$$R_n’’ &#x3D; \text{SelfAttn}(\tilde{R}_n)$$</p>
+</li>
+<li><p>历史-知识交互：同结构，得到Hₙ’’</p>
+</li>
+<li><p>维度：</p>
 <ul>
-<li>合并LSTM的3个门为<strong>2个门</strong>（更新门、重置门）；</li>
-<li>取消独立的<strong>细胞状态cₜ</strong>，用<strong>隐藏状态hₜ</strong>同时承载短期与长期信息；</li>
-<li>以更少参数（约LSTM的2&#x2F;3）实现<strong>接近LSTM的性能</strong>。</li>
-</ul>
-<h2 id="二、核心结构与门控机制"><a href="#二、核心结构与门控机制" class="headerlink" title="二、核心结构与门控机制"></a>二、核心结构与门控机制</h2><p>GRU的单个单元仅含<strong>两个门</strong>和<strong>候选隐藏状态</strong>，输入为当前时刻输入$x_t$与上一时刻隐藏状态$h_{t-1}$，输出为当前隐藏状态$h_t$（无独立细胞状态）。</p>
-<h3 id="1-两个核心门（均用Sigmoid激活，输出0-1）"><a href="#1-两个核心门（均用Sigmoid激活，输出0-1）" class="headerlink" title="1. 两个核心门（均用Sigmoid激活，输出0~1）"></a>1. 两个核心门（均用Sigmoid激活，输出0~1）</h3><h4 id="（1）更新门（Update-Gate-z-t-）"><a href="#（1）更新门（Update-Gate-z-t-）" class="headerlink" title="（1）更新门（Update Gate, $z_t$）"></a>（1）更新门（Update Gate, $z_t$）</h4><ul>
-<li><strong>作用</strong>：合并LSTM的<strong>遗忘门+输入门</strong>，决定<strong>保留多少历史信息$h_{t-1}$</strong>、<strong>更新多少新信息</strong>；</li>
-<li><strong>公式</strong>：<br>$$z_t &#x3D; \sigma\left(W_z \cdot [h_{t-1}, x_t] + b_z\right)$$<br>其中：<ul>
-<li>$[h_{t-1}, x_t]$：将上一隐藏状态与当前输入<strong>拼接</strong>；</li>
-<li>$W_z$、$b_z$：更新门的权重与偏置（可训练）；</li>
-<li>$\sigma$：Sigmoid函数，$\sigma(x)&#x3D;\frac{1}{1+e^{-x}}$，输出0~1；</li>
+<li>Rₙ’：5×d（5个图像区域）</li>
+<li>Eₙ’：25×d（25条fact）</li>
+<li>输出Rₙ’’：仍5×d</li>
 </ul>
 </li>
-<li><strong>取值含义</strong>：<ul>
-<li>$z_t \to 1$：<strong>几乎完全保留历史信息</strong>，忽略当前输入；</li>
-<li>$z_t \to 0$：<strong>几乎完全用新信息替换历史</strong>，快速更新状态。</li>
-</ul>
+<li><p>作用：<strong>让视觉&#x2F;历史特征吸收知识语义，实现知识增强</strong></p>
 </li>
 </ul>
-<h4 id="（2）重置门（Reset-Gate-r-t-）"><a href="#（2）重置门（Reset-Gate-r-t-）" class="headerlink" title="（2）重置门（Reset Gate, $r_t$）"></a>（2）重置门（Reset Gate, $r_t$）</h4><ul>
-<li><strong>作用</strong>：控制<strong>历史信息对当前候选状态的影响程度</strong>，决定是否“重置”历史记忆；</li>
-<li><strong>公式</strong>：<br>$$r_t &#x3D; \sigma\left(W_r \cdot [h_{t-1}, x_t] + b_r\right)$$<br>其中：$W_r$、$b_r$为重置门的权重与偏置；</li>
-<li><strong>取值含义</strong>：<ul>
-<li>$r_t \to 1$：<strong>完全保留历史信息</strong>，用于计算候选状态；</li>
-<li>$r_t \to 0$：<strong>完全重置历史</strong>，候选状态仅依赖当前输入。</li>
+<h4 id="（3）Instruction-guided-Aggregation-聚合模块"><a href="#（3）Instruction-guided-Aggregation-聚合模块" class="headerlink" title="（3）Instruction-guided Aggregation 聚合模块"></a>（3）Instruction-guided Aggregation 聚合模块</h4><ul>
+<li>用指令CLS token做注意力，融合5个区域为单一视图向量：<br>$$\eta_n &#x3D; \text{softmax}\left(\frac{(R_n W_3)(L_0 W_4)^T}{\sqrt{d}}\right)$$<br>$$\bar{r}<em>n &#x3D; \sum</em>{i&#x3D;1}^5 \eta_{n,i} R_{n,i}’’$$</li>
+<li>历史特征同理得到ℎ̄ₙ</li>
+<li>用FFN融合r̄ₙ与ℎ̄ₙ，得到<strong>知识增强视图表示</strong></li>
+<li>作用：<strong>形成可直接用于导航决策的紧凑特征</strong></li>
 </ul>
-</li>
-</ul>
-<h3 id="2-候选隐藏状态（-tilde-h-t-）"><a href="#2-候选隐藏状态（-tilde-h-t-）" class="headerlink" title="2. 候选隐藏状态（$\tilde{h}_t$）"></a>2. 候选隐藏状态（$\tilde{h}_t$）</h3><ul>
-<li><strong>作用</strong>：基于<strong>重置后的历史信息</strong>与当前输入，生成<strong>新的候选状态</strong>（相当于LSTM的细胞状态候选）；</li>
-<li><strong>公式</strong>：<br>$$\tilde{h}<em>t &#x3D; \tanh\left(W_h \cdot [r_t \odot h</em>{t-1}, x_t] + b_h\right)$$<br>其中：<ul>
-<li>$\odot$：<strong>逐元素乘法（Hadamard积）</strong>，用$r_t$对$h_{t-1}$做“过滤”；</li>
-<li>$W_h$、$b_h$：候选状态的权重与偏置；</li>
-<li>$\tanh$：双曲正切激活，输出-1~1，保证候选状态的取值范围。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-最终隐藏状态（-h-t-）"><a href="#3-最终隐藏状态（-h-t-）" class="headerlink" title="3. 最终隐藏状态（$h_t$）"></a>3. 最终隐藏状态（$h_t$）</h3><ul>
-<li><strong>作用</strong>：通过<strong>更新门$z_t$</strong>，对<strong>历史状态$h_{t-1}$<strong>与</strong>候选状态$\tilde{h}_t$<strong>做</strong>加权融合</strong>，得到当前时刻的最终隐藏状态；</li>
-<li><strong>公式</strong>：<br>$$h_t &#x3D; (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t$$<br>该式是GRU的核心：<strong>$1-z_t$控制历史保留比例，$z_t$控制新信息融入比例</strong>。</li>
-</ul>
-<h2 id="三、GRU完整前向传播流程（一步）"><a href="#三、GRU完整前向传播流程（一步）" class="headerlink" title="三、GRU完整前向传播流程（一步）"></a>三、GRU完整前向传播流程（一步）</h2><ol>
-<li>输入：$x_t$（当前输入）、$h_{t-1}$（上一隐藏状态）；</li>
-<li>计算更新门：$z_t &#x3D; \sigma(W_z \cdot [h_{t-1}, x_t] + b_z)$；</li>
-<li>计算重置门：$r_t &#x3D; \sigma(W_r \cdot [h_{t-1}, x_t] + b_r)$；</li>
-<li>计算候选状态：$\tilde{h}<em>t &#x3D; \tanh(W_h \cdot [r_t \odot h</em>{t-1}, x_t] + b_h)$；</li>
-<li>计算最终隐藏状态：$h_t &#x3D; (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t$；</li>
-<li>输出：$h_t$（可作为下一时间步输入，或直接输出到后续层）。</li>
+<h3 id="3-训练策略"><a href="#3-训练策略" class="headerlink" title="3. 训练策略"></a>3. 训练策略</h3><ul>
+<li>预训练任务：<ol>
+<li>Masked Language Modeling（MLM）</li>
+<li>Masked View Classification（MVC）</li>
+<li>Single-step Action Prediction（SAP）</li>
+<li>Object Grounding（OG）</li>
 </ol>
-<h2 id="四、GRU-vs-LSTM-关键对比"><a href="#四、GRU-vs-LSTM-关键对比" class="headerlink" title="四、GRU vs LSTM 关键对比"></a>四、GRU vs LSTM 关键对比</h2><table>
-<thead>
-<tr>
-<th align="left">对比维度</th>
-<th align="left">LSTM</th>
-<th align="left">GRU</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>门数量</strong></td>
-<td align="left">3（遗忘门、输入门、输出门）</td>
-<td align="left">2（更新门、重置门）</td>
-</tr>
-<tr>
-<td align="left"><strong>状态载体</strong></td>
-<td align="left">双状态（$h_t$、$c_t$）</td>
-<td align="left">单状态（仅$h_t$）</td>
-</tr>
-<tr>
-<td align="left"><strong>参数量</strong></td>
-<td align="left">约4倍RNN</td>
-<td align="left">约3倍RNN（少约33%）</td>
-</tr>
-<tr>
-<td align="left"><strong>计算速度</strong></td>
-<td align="left">较慢</td>
-<td align="left">更快（少1个门计算）</td>
-</tr>
-<tr>
-<td align="left"><strong>长序列能力</strong></td>
-<td align="left">极强（细胞状态独立传递）</td>
-<td align="left">强（依赖$h_t$传递）</td>
-</tr>
-<tr>
-<td align="left"><strong>适用场景</strong></td>
-<td align="left">超长序列（如长文本、语音）</td>
-<td align="left">中短序列、资源受限场景</td>
-</tr>
-<tr>
-<td align="left"><strong>训练难度</strong></td>
-<td align="left">较高</td>
-<td align="left">较低（收敛更快）</td>
-</tr>
-</tbody></table>
-<h2 id="五、GRU的核心优势与局限性"><a href="#五、GRU的核心优势与局限性" class="headerlink" title="五、GRU的核心优势与局限性"></a>五、GRU的核心优势与局限性</h2><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
-<li><strong>结构简洁、参数更少</strong>：比LSTM少约1&#x2F;3参数，训练更快、内存占用更低；</li>
-<li><strong>训练效率高</strong>：计算量小、收敛速度快，适合移动端、嵌入式设备；</li>
-<li><strong>性能接近LSTM</strong>：在多数NLP&#x2F;时序任务（如文本分类、机器翻译、语音识别）中，准确率与LSTM几乎无差异；</li>
-<li><strong>梯度更稳定</strong>：门控机制有效缓解梯度消失，能捕捉长距离依赖。</li>
-</ol>
-<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><ol>
-<li><strong>超长序列能力略弱</strong>：无独立细胞状态，长距离信息传递依赖$h_t$，在极长序列（如1000+时间步）中性能可能不及LSTM；</li>
-<li><strong>表达能力略逊</strong>：单状态设计限制了信息的分离存储，复杂任务中可能需要更深网络或更复杂变体；</li>
-<li><strong>依赖数据规模</strong>：在小数据集上，GRU的泛化能力可能不如LSTM。</li>
-</ol>
-<h2 id="六、常见变体与应用场景"><a href="#六、常见变体与应用场景" class="headerlink" title="六、常见变体与应用场景"></a>六、常见变体与应用场景</h2><h3 id="1-常见变体"><a href="#1-常见变体" class="headerlink" title="1. 常见变体"></a>1. 常见变体</h3><ul>
-<li><strong>简化GRU（SGRU）</strong>：去掉重置门，仅保留更新门，进一步简化结构；</li>
-<li><strong>双向GRU（Bi-GRU）</strong>：结合前向与后向GRU，捕捉序列上下文信息（如文本情感分析）；</li>
-<li><strong>GRU注意力机制</strong>：在GRU基础上加入注意力，聚焦关键时间步信息（如机器翻译）。</li>
+</li>
+<li>微调：模仿学习+伪交互专家路径监督</li>
 </ul>
-<h3 id="2-典型应用"><a href="#2-典型应用" class="headerlink" title="2. 典型应用"></a>2. 典型应用</h3><ul>
-<li><strong>自然语言处理（NLP）</strong>：文本分类、机器翻译、情感分析、命名实体识别；</li>
-<li><strong>时序预测</strong>：股票价格、气温、流量预测；</li>
-<li><strong>语音处理</strong>：语音识别、语音合成；</li>
-<li><strong>推荐系统</strong>：用户行为序列建模。</li>
+<hr>
+<h2 id="五、实验设置"><a href="#五、实验设置" class="headerlink" title="五、实验设置"></a>五、实验设置</h2><h3 id="1-数据集"><a href="#1-数据集" class="headerlink" title="1. 数据集"></a>1. 数据集</h3><ul>
+<li>REVERIE：高级指令+目标物体定位，路径短</li>
+<li>R2R：分步指令，标准导航</li>
+<li>SOON：长指令+目标物体中心预测</li>
 </ul>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>GRU是LSTM的<strong>高效简化版</strong>，通过<strong>更新门+重置门+单隐藏状态</strong>的设计，在<strong>参数、速度、性能</strong>间取得了极佳平衡。它是序列建模的首选轻量级模型，尤其适合<strong>中短序列、资源受限</strong>场景；若处理<strong>超长序列</strong>，则优先选择LSTM或其变体。</p>
+<h3 id="2-评估指标"><a href="#2-评估指标" class="headerlink" title="2. 评估指标"></a>2. 评估指标</h3><ul>
+<li>导航：SR、SPL、NE、TL、OSR</li>
+<li>物体定位：RGS、RGSPL</li>
+</ul>
+<h3 id="3-基线模型"><a href="#3-基线模型" class="headerlink" title="3. 基线模型"></a>3. 基线模型</h3><p>DUET、VLNBERT、AirBERT、HAMT、HOP等</p>
+<hr>
+<h2 id="六、实验结果与结论"><a href="#六、实验结果与结论" class="headerlink" title="六、实验结果与结论"></a>六、实验结果与结论</h2><ol>
+<li><strong>SOTA性能</strong>：在REVERIE、R2R、SOON三数据集的可见&#x2F;未见分割上，多数指标超过之前最优方法</li>
+<li>REVERIE提升最显著：SR↑5.52%、SPL↑6.51%、RGSPL↑4.93%</li>
+<li>消融实验：<ul>
+<li>提纯、视觉-知识交互、历史-知识交互均有效</li>
+<li>事实fact效果 &gt; 物体标签object</li>
+<li>视图切5块效果最优</li>
+</ul>
+</li>
+<li>核心结论：<ul>
+<li>外部文本事实可有效补充视觉信息</li>
+<li>提纯-交互-聚合能高效融合知识</li>
+<li>知识增强显著提升泛化与区分相似场景能力</li>
+</ul>
+</li>
+</ol>
 
 </article>
     
@@ -521,6 +524,7 @@
             <span data-number="02"></span>
         </h5>
     </div>
+    
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
@@ -546,38 +550,6 @@
             <ul class="trm-card-data trm-label">
                 <li>26/03/29</li>
                 <li>12:53</li>
-                
-                
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/03/28/%E5%9F%BA%E4%BA%8ECLIP%E7%9A%84%E5%9B%BE%E6%96%87%E7%BB%84%E5%90%88%E6%A3%80%E7%B4%A2/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E8%AE%BA%E6%96%87/">
-                    论文
-                </a>
-            </div>
-            <h5>
-                <a href="/2026/03/28/%E5%9F%BA%E4%BA%8ECLIP%E7%9A%84%E5%9B%BE%E6%96%87%E7%BB%84%E5%90%88%E6%A3%80%E7%B4%A2/" class="trm-anima-link">
-                    基于CLIP的图文组合检索
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>26/03/28</li>
-                <li>20:32</li>
                 
                 
             </ul>
@@ -681,7 +653,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="一、背景与核心动机"><a rel="nofollow" class="trm-toc-link" href="#一、背景与核心动机"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一、背景与核心动机</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、核心结构与门控机制"><a rel="nofollow" class="trm-toc-link" href="#二、核心结构与门控机制"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、核心结构与门控机制</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 两个核心门（均用Sigmoid激活，输出0~1）"><a rel="nofollow" class="trm-toc-link" href="#1-两个核心门（均用Sigmoid激活，输出0-1）"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1. 两个核心门（均用Sigmoid激活，输出0~1）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="（1）更新门（Update Gate, $z_t$）"><a rel="nofollow" class="trm-toc-link" href="#（1）更新门（Update-Gate-z-t-）"><span class="trm-toc-number">2.1.1.</span> <span class="trm-toc-text">（1）更新门（Update Gate, $z_t$）</span></a></li><li class="trm-toc-item trm-toc-level-4" title="（2）重置门（Reset Gate, $r_t$）"><a rel="nofollow" class="trm-toc-link" href="#（2）重置门（Reset-Gate-r-t-）"><span class="trm-toc-number">2.1.2.</span> <span class="trm-toc-text">（2）重置门（Reset Gate, $r_t$）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="2. 候选隐藏状态（$\tilde{h}_t$）"><a rel="nofollow" class="trm-toc-link" href="#2-候选隐藏状态（-tilde-h-t-）"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2. 候选隐藏状态（$\tilde{h}_t$）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 最终隐藏状态（$h_t$）"><a rel="nofollow" class="trm-toc-link" href="#3-最终隐藏状态（-h-t-）"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3. 最终隐藏状态（$h_t$）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、GRU完整前向传播流程（一步）"><a rel="nofollow" class="trm-toc-link" href="#三、GRU完整前向传播流程（一步）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">三、GRU完整前向传播流程（一步）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、GRU vs LSTM 关键对比"><a rel="nofollow" class="trm-toc-link" href="#四、GRU-vs-LSTM-关键对比"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">四、GRU vs LSTM 关键对比</span></a></li><li class="trm-toc-item trm-toc-level-2" title="五、GRU的核心优势与局限性"><a rel="nofollow" class="trm-toc-link" href="#五、GRU的核心优势与局限性"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">五、GRU的核心优势与局限性</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="优势"><a rel="nofollow" class="trm-toc-link" href="#优势"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">优势</span></a></li><li class="trm-toc-item trm-toc-level-3" title="局限性"><a rel="nofollow" class="trm-toc-link" href="#局限性"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">局限性</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="六、常见变体与应用场景"><a rel="nofollow" class="trm-toc-link" href="#六、常见变体与应用场景"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">六、常见变体与应用场景</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 常见变体"><a rel="nofollow" class="trm-toc-link" href="#1-常见变体"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">1. 常见变体</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 典型应用"><a rel="nofollow" class="trm-toc-link" href="#2-典型应用"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">2. 典型应用</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="七、总结"><a rel="nofollow" class="trm-toc-link" href="#七、总结"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">七、总结</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="一、论文基础信息"><a rel="nofollow" class="trm-toc-link" href="#一、论文基础信息"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一、论文基础信息</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、研究背景与问题"><a rel="nofollow" class="trm-toc-link" href="#二、研究背景与问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、研究背景与问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 任务定义"><a rel="nofollow" class="trm-toc-link" href="#1-任务定义"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1. 任务定义</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 现有方法缺陷"><a rel="nofollow" class="trm-toc-link" href="#2-现有方法缺陷"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2. 现有方法缺陷</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 本文核心动机"><a rel="nofollow" class="trm-toc-link" href="#3-本文核心动机"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3. 本文核心动机</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、整体方案总览"><a rel="nofollow" class="trm-toc-link" href="#三、整体方案总览"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">三、整体方案总览</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、技术细节"><a rel="nofollow" class="trm-toc-link" href="#四、技术细节"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">四、技术细节</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 知识库构建与事实获取"><a rel="nofollow" class="trm-toc-link" href="#1-知识库构建与事实获取"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">1. 知识库构建与事实获取</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. KERM三大核心模块"><a rel="nofollow" class="trm-toc-link" href="#2-KERM三大核心模块"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">2. KERM三大核心模块</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="（1）Purification 提纯模块"><a rel="nofollow" class="trm-toc-link" href="#（1）Purification-提纯模块"><span class="trm-toc-number">4.2.1.</span> <span class="trm-toc-text">（1）Purification 提纯模块</span></a></li><li class="trm-toc-item trm-toc-level-4" title="（2）Fact-aware Interaction 交互模块"><a rel="nofollow" class="trm-toc-link" href="#（2）Fact-aware-Interaction-交互模块"><span class="trm-toc-number">4.2.2.</span> <span class="trm-toc-text">（2）Fact-aware Interaction 交互模块</span></a></li><li class="trm-toc-item trm-toc-level-4" title="（3）Instruction-guided Aggregation 聚合模块"><a rel="nofollow" class="trm-toc-link" href="#（3）Instruction-guided-Aggregation-聚合模块"><span class="trm-toc-number">4.2.3.</span> <span class="trm-toc-text">（3）Instruction-guided Aggregation 聚合模块</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="3. 训练策略"><a rel="nofollow" class="trm-toc-link" href="#3-训练策略"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">3. 训练策略</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="五、实验设置"><a rel="nofollow" class="trm-toc-link" href="#五、实验设置"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">五、实验设置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 数据集"><a rel="nofollow" class="trm-toc-link" href="#1-数据集"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">1. 数据集</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 评估指标"><a rel="nofollow" class="trm-toc-link" href="#2-评估指标"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">2. 评估指标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 基线模型"><a rel="nofollow" class="trm-toc-link" href="#3-基线模型"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">3. 基线模型</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="六、实验结果与结论"><a rel="nofollow" class="trm-toc-link" href="#六、实验结果与结论"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">六、实验结果与结论</span></a></li></ol>
       </div>
     </div>
 
