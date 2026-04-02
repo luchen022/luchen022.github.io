@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="文法概览与上下文无关文法（CFG）详解 1️⃣ 语法（Grammar）到底是什么？在形式语言理论中，文法是一套产生式规则（production rules），用来描述一个语言（即一组合法字符串）如何“生成”。每个文法由四个基本要素组成：    组成 符号 说明    非终结符（Non‑terminal） 大写字母或 &lt;...&gt; 等 用来表示 抽象结构，在推导过程中会被展开。   终结符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文法">
+<meta property="og:url" content="http://example.com/2026/04/02/%E6%96%87%E6%B3%95/index.html">
+<meta property="og:site_name" content="LC的博客">
+<meta property="og:description" content="文法概览与上下文无关文法（CFG）详解 1️⃣ 语法（Grammar）到底是什么？在形式语言理论中，文法是一套产生式规则（production rules），用来描述一个语言（即一组合法字符串）如何“生成”。每个文法由四个基本要素组成：    组成 符号 说明    非终结符（Non‑terminal） 大写字母或 &lt;...&gt; 等 用来表示 抽象结构，在推导过程中会被展开。   终结符">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-04-02T06:10:16.000Z">
+<meta property="article:modified_time" content="2026-04-02T06:13:26.046Z">
+<meta property="article:author" content="LC">
+<meta name="twitter:card" content="summary">
+
+
+<title >文法</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon-16x16.png?v=2.2.7' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.2.7' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"LC","root":"/","typed_text":["计算机爱好者"],"theme_version":"2.2.7","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","apple_touch_icon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","show_text":"欢迎回来～","hide_text":"记得回来看看呀！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-04-02 14:13:26"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            L<span>C</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/tags/" target="">
+                    标签
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/links/" target="">
+                    友链
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            文法
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2026
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/manbo.webp">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        LC的博客
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/luchen022/" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/jadenlc" title="gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-digital-ocean"></i>
+        </a>
+    
+        <a href="https://space.bilibili.com/1527475192" title="bilibili" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-youtube-square"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                地址:
+            </div>
+            <div class="trm-label trm-label-light">
+                北京
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                21
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                学校:
+            </div>
+            <div class="trm-label trm-label-light">
+                中国人民大学
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:luchen05@189.cn" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            04/02
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            14:10
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            LC
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="文法概览与上下文无关文法（CFG）详解"><a href="#文法概览与上下文无关文法（CFG）详解" class="headerlink" title="文法概览与上下文无关文法（CFG）详解"></a>文法概览与上下文无关文法（CFG）详解</h1><hr>
+<h2 id="1️⃣-语法（Grammar）到底是什么？"><a href="#1️⃣-语法（Grammar）到底是什么？" class="headerlink" title="1️⃣ 语法（Grammar）到底是什么？"></a>1️⃣ 语法（Grammar）到底是什么？</h2><p>在形式语言理论中，<strong>文法</strong>是一套<strong>产生式规则</strong>（production rules），用来描述一个语言（即一组合法字符串）如何“生成”。<br>每个文法由四个基本要素组成：</p>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>非终结符</strong>（Non‑terminal）</td>
+<td>大写字母或 <code>&lt;...&gt;</code> 等</td>
+<td>用来表示 <strong>抽象结构</strong>，在推导过程中会被展开。</td>
+</tr>
+<tr>
+<td><strong>终结符</strong>（Terminal）</td>
+<td>小写字母、数字、标点等</td>
+<td>最终出现在语言中的 <strong>实际字符</strong>，不能再继续展开。</td>
+</tr>
+<tr>
+<td><strong>开始符号</strong>（Start symbol）</td>
+<td>通常记作 <code>S</code></td>
+<td>推导的起点。</td>
+</tr>
+<tr>
+<td><strong>产生式</strong>（Production）</td>
+<td><code>A → α</code></td>
+<td>当左侧为非终结符 <code>A</code>，右侧 <code>α</code> 为终结符&#x2F;非终结符的任意串。</td>
+</tr>
+</tbody></table>
+<p>文法的任务是：从 <strong>开始符号</strong> 出发，反复使用产生式，最终只剩终结符，从而得到语言中的一个句子。</p>
+<hr>
+<h2 id="2️⃣-文法的层次——Chomsky-层级"><a href="#2️⃣-文法的层次——Chomsky-层级" class="headerlink" title="2️⃣ 文法的层次——Chomsky 层级"></a>2️⃣ 文法的层次——Chomsky 层级</h2><p>诺姆·乔姆斯基（Noam Chomsky）把所有形式文法分成 <strong>四类</strong>（常称为 <em>Chomsky Hierarchy</em>），其中前三类（Type‑3、2、1）是最常见的：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>产生式形式</th>
+<th>对应语言</th>
+<th>常见应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Type‑3</strong></td>
+<td><strong>正则文法</strong>（Regular Grammar）</td>
+<td><code>A → aB</code> 或 <code>A → a</code>（左线性&#x2F;右线性）</td>
+<td>正则语言</td>
+<td>词法分析、有限状态机</td>
+</tr>
+<tr>
+<td><strong>Type‑2</strong></td>
+<td><strong>上下文无关文法</strong>（Context‑Free Grammar, CFG）</td>
+<td><code>A → γ</code>，左侧<strong>只能是单个非终结符</strong></td>
+<td>上下文无关语言</td>
+<td>编译器语法分析、算术表达式、XML&#x2F;HTML</td>
+</tr>
+<tr>
+<td><strong>Type‑1</strong></td>
+<td><strong>上下文相关文法</strong>（Context‑Sensitive Grammar, CSG）</td>
+<td><code>αAβ → αγβ</code>，左侧与右侧上下文均可出现</td>
+<td>上下文相关语言</td>
+<td>某些自然语言子集、约束性更强的编程语言特性</td>
+</tr>
+<tr>
+<td><strong>Type‑0</strong></td>
+<td><strong>递归可枚举文法</strong>（Recursively Enumerable Grammar）</td>
+<td>任意形式 <code>α → β</code>（只要求 <code>α</code> 非空）</td>
+<td>所有可计算语言</td>
+<td>图灵机模型、通用程序语言理论</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>常见误解</strong>：有时教材只提“正则、上下文无关、上下文相关”三种文法，省略了最强大的 Type‑0。但在理论上 <strong>四类</strong> 才完整。</p>
+</blockquote>
+<p>下面重点讲 <strong>上下文无关文法（CFG）</strong>。</p>
+<hr>
+<h2 id="3️⃣-什么是上下文无关文法（CFG）？"><a href="#3️⃣-什么是上下文无关文法（CFG）？" class="headerlink" title="3️⃣ 什么是上下文无关文法（CFG）？"></a>3️⃣ 什么是上下文无关文法（CFG）？</h2><h3 id="3-1-正式定义"><a href="#3-1-正式定义" class="headerlink" title="3.1 正式定义"></a>3.1 正式定义</h3><blockquote>
+<p><strong>CFG &#x3D; (V, Σ, R, S)</strong></p>
+<ul>
+<li><strong>V</strong>：非终结符集合（Variables），如 <code>{S, A, B, Expr, Term, Factor}</code>  </li>
+<li><strong>Σ</strong>：终结符集合（Alphabet），如 <code>{+, *, (, ), id, number}</code>  </li>
+<li><strong>R</strong>：产生式集合（Rules），每条规则形如 <code>A → γ</code>，其中 <code>A ∈ V</code>，<code>γ ∈ (V ∪ Σ)*</code>  </li>
+<li><strong>S ∈ V</strong>：开始符号</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>上下文无关</strong> 指：左侧永远是<strong>单个非终结符</strong>，不依赖于它出现的上下文。  </p>
+</blockquote>
+<h3 id="3-2-推导方式"><a href="#3-2-推导方式" class="headerlink" title="3.2 推导方式"></a>3.2 推导方式</h3><ul>
+<li><strong>左递归</strong> vs <strong>右递归</strong>  </li>
+<li><strong>左most 推导</strong>（每一步展开最左侧的非终结符）  </li>
+<li><strong>rightmost 推导</strong>（每一步展开最右侧的非终结符）  </li>
+<li><strong>句子（Sentential) 形式</strong>：在推导过程中的任何中间串（终结符&#x2F;非终结符混合）</li>
+</ul>
+<h3 id="3-3-语法树（Parse-Tree-Derivation-Tree）"><a href="#3-3-语法树（Parse-Tree-Derivation-Tree）" class="headerlink" title="3.3 语法树（Parse Tree &#x2F; Derivation Tree）"></a>3.3 语法树（Parse Tree &#x2F; Derivation Tree）</h3><ul>
+<li>根节点是 <code>S</code>  </li>
+<li>内部节点是非终结符  </li>
+<li>叶子节点（从左到右）形成最终句子</li>
+</ul>
+<blockquote>
+<p>语法树是 <strong>唯一</strong>（若文法是 <strong>二义的</strong>，则会有多棵树对应同一句子）。</p>
+</blockquote>
+<hr>
+<h2 id="4️⃣-CFG-的实例"><a href="#4️⃣-CFG-的实例" class="headerlink" title="4️⃣ CFG 的实例"></a>4️⃣ CFG 的实例</h2><h3 id="4-1-基本算术表达式文法（最常见示例）"><a href="#4-1-基本算术表达式文法（最常见示例）" class="headerlink" title="4.1 基本算术表达式文法（最常见示例）"></a>4.1 基本算术表达式文法（最常见示例）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.  Expr → Expr + Term | Expr - Term | Term</span><br><span class="line">2.  Term → Term * Factor | Term / Factor | Factor</span><br><span class="line">3.  Factor → ( Expr ) | number | id</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>终结符</strong>：<code>{+, -, *, /, (, ), number, id}</code>  </li>
+<li><strong>非终结符</strong>：<code>{Expr, Term, Factor}</code>  </li>
+<li><strong>开始符号</strong>：<code>Expr</code></li>
+</ul>
+<p><strong>推导示例</strong>（生成 <code>id + number * ( id - number )</code>）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Expr</span><br><span class="line">→ Expr + Term</span><br><span class="line">→ Term + Term</span><br><span class="line">→ Factor + Term</span><br><span class="line">→ id + Term</span><br><span class="line">→ id + Term * Factor</span><br><span class="line">→ id + Factor * Factor</span><br><span class="line">→ id + number * Factor</span><br><span class="line">→ id + number * ( Expr )</span><br><span class="line">→ id + number * ( Term )</span><br><span class="line">→ id + number * ( Factor )</span><br><span class="line">→ id + number * ( id )</span><br></pre></td></tr></table></figure>
+
+<p>对应的 <strong>语法树</strong>（左递归形式）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">       Expr</span><br><span class="line">     /  |   \</span><br><span class="line">  Expr  +   Term</span><br><span class="line">   |        / | \</span><br><span class="line"> Term    Term * Factor</span><br><span class="line">   |       |      |</span><br><span class="line">Factor   Factor  ( Expr )</span><br><span class="line">  |        |        |</span><br><span class="line"> id     number    Expr</span><br><span class="line">                     |</span><br><span class="line">                   Term</span><br><span class="line">                     |</span><br><span class="line">                  Factor</span><br><span class="line">                     |</span><br><span class="line">                     id</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为避免左递归导致的 <strong>LL(1)</strong> 解析冲突，常把文法改写成等价的 <strong>右递归</strong> 或 <strong>消除左递归</strong> 形式。</p>
+</blockquote>
+<h3 id="4-2-BNF（巴克斯-诺尔范式）写法"><a href="#4-2-BNF（巴克斯-诺尔范式）写法" class="headerlink" title="4.2 BNF（巴克斯-诺尔范式）写法"></a>4.2 BNF（巴克斯-诺尔范式）写法</h3><p>上例的 BNF（使用 <code>::=</code> 表示产生式，<code>|</code> 表示选择）：</p>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">&lt;Expr&gt;</span>   ::= &lt;Expr&gt; <span class="string">&quot;+&quot;</span> &lt;Term&gt; | &lt;Expr&gt; <span class="string">&quot;-&quot;</span> &lt;Term&gt; | &lt;Term&gt;</span><br><span class="line"><span class="attribute">&lt;Term&gt;</span>   ::= &lt;Term&gt; <span class="string">&quot;*&quot;</span> &lt;Factor&gt; | &lt;Term&gt; <span class="string">&quot;/&quot;</span> &lt;Factor&gt; | &lt;Factor&gt;</span><br><span class="line"><span class="attribute">&lt;Factor&gt;</span> ::= <span class="string">&quot;(&quot;</span> &lt;Expr&gt; <span class="string">&quot;)&quot;</span> | &lt;Number&gt; | &lt;Identifier&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-其他常见-CFG-示例"><a href="#4-3-其他常见-CFG-示例" class="headerlink" title="4.3 其他常见 CFG 示例"></a>4.3 其他常见 CFG 示例</h3><table>
+<thead>
+<tr>
+<th>领域</th>
+<th>文法（简化）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>编程语言</strong></td>
+<td>&#96;Stmt → if ‘(‘ Cond ‘)’ Stmt else Stmt</td>
+<td>while ‘(‘ Cond ‘)’ Stmt</td>
+</tr>
+<tr>
+<td><strong>正则表达式</strong></td>
+<td>&#96;R → R “</td>
+<td>“ S</td>
+</tr>
+<tr>
+<td><strong>自然语言</strong>（子集）</td>
+<td><code>S → NP VP</code><br>&#96;NP → Det N</td>
+<td>N</td>
+</tr>
+<tr>
+<td><strong>XML&#x2F;HTML</strong></td>
+<td><code>Element → &quot;&lt;&quot; Tag &quot;&gt;&quot; Content &quot;&lt;/&quot; Tag &quot;&gt;&quot;</code><br>&#96;Content → Element Content</td>
+<td>Text</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5️⃣-CFG-的关键性质"><a href="#5️⃣-CFG-的关键性质" class="headerlink" title="5️⃣ CFG 的关键性质"></a>5️⃣ CFG 的关键性质</h2><table>
+<thead>
+<tr>
+<th>性质</th>
+<th>描述</th>
+<th>判定难易度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>语言闭包</strong></td>
+<td>CFL 对 <strong>并、连接、星号</strong> 闭合；对 <strong>交、补</strong> 不闭合（补语言不一定是 CFL）。</td>
+<td>交、补判定<strong>不可判定</strong></td>
+</tr>
+<tr>
+<td><strong>等价性</strong></td>
+<td>两个 CFG 是否生成同一语言是<strong>不可判定</strong>的（等价问题）。</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>空语言</strong>（emptiness）</td>
+<td>是否存在任意句子 <code>w ∈ L(G)</code> 可在 <strong>多项式时间</strong> 判定。</td>
+<td>P</td>
+</tr>
+<tr>
+<td><strong>可达性</strong>（reachability）</td>
+<td>某非终结符是否能够推导出终结符串，可在 <strong>线性时间</strong> 判定。</td>
+<td>O(</td>
+</tr>
+<tr>
+<td><strong>二义性</strong>（ambiguity）</td>
+<td>是否存在同一字符串对应多棵不同语法树，<strong>不可判定</strong>（一般只能手工或通过限定文法）</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>决定性</strong></td>
+<td>是否能用 <strong>LL(k)、LR(k)</strong> 等确定性自顶向下&#x2F;自底向上解析器</td>
+<td>取决于文法结构</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6️⃣-CFG-的解析技术（Parsing-Algorithms）"><a href="#6️⃣-CFG-的解析技术（Parsing-Algorithms）" class="headerlink" title="6️⃣ CFG 的解析技术（Parsing Algorithms）"></a>6️⃣ CFG 的解析技术（Parsing Algorithms）</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>适用文法</th>
+<th>时间复杂度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>递归下降</strong>（手写 <code>LL(1)</code>）</td>
+<td><strong>LL(1)</strong> 文法（无左递归、左因子化）</td>
+<td>O(n)</td>
+<td>实现简单，常用于教学&#x2F;小型 DSL</td>
+</tr>
+<tr>
+<td><strong>表驱动 LL(k)</strong></td>
+<td><strong>LL(k)</strong> 文法（k ≥ 1）</td>
+<td>O(k·n)</td>
+<td>需要构造预测分析表</td>
+</tr>
+<tr>
+<td><strong>SLR &#x2F; LR &#x2F; LALR</strong></td>
+<td><strong>LR(k)</strong> 文法（几乎所有实用编程语言）</td>
+<td>O(n)</td>
+<td>自动生成（Yacc&#x2F;Bison、ANTLR）</td>
+</tr>
+<tr>
+<td><strong>Earley</strong></td>
+<td>任意 CFG（包括二义的）</td>
+<td>O(n³) 最坏 &#x2F; O(n²) 对二义 &#x2F; O(n) 对 LR(k)</td>
+<td>适合自然语言、快速原型</td>
+</tr>
+<tr>
+<td><strong>CYK</strong>（Cocke‑Younger‑Kasami）</td>
+<td><strong>CNF</strong>（Chomsky 正规形）</td>
+<td>O(n³)</td>
+<td>常用于语言成员性（membership）检测</td>
+</tr>
+<tr>
+<td><strong>Packrat</strong>（基于 PEG）</td>
+<td><strong>Parsing Expression Grammar</strong>（与 CFG 等价但不二义）</td>
+<td>O(n)（需缓存）</td>
+<td>实现简洁，常用于现代解析库</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>实际选型</strong>：  </p>
+<ul>
+<li><strong>编程语言</strong>：LR&#x2F;LALR（如 Yacc&#x2F;Bison、ANTLR）  </li>
+<li><strong>嵌入式 DSL</strong>：LL(1) 手写或递归下降  </li>
+<li><strong>自然语言</strong>：Earley &#x2F; CYK（或统计模型）  </li>
+<li><strong>文档&#x2F;配置文件</strong>：PEG + Packrat（如 Rust <code>pest</code>、Go <code>participle</code>）</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="7️⃣-CFG-与其他层次文法的关系"><a href="#7️⃣-CFG-与其他层次文法的关系" class="headerlink" title="7️⃣ CFG 与其他层次文法的关系"></a>7️⃣ CFG 与其他层次文法的关系</h2><table>
+<thead>
+<tr>
+<th>文法层级</th>
+<th>包含关系</th>
+<th>简单例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正则文法 (Type‑3)</td>
+<td>⊂ 上下文无关文法 (Type‑2)</td>
+<td><code>a* b</code> 能写成 &#96;S → a S</td>
+</tr>
+<tr>
+<td>上下文无关文法 (Type‑2)</td>
+<td>⊂ 上下文相关文法 (Type‑1)</td>
+<td><code>a^n b^n c^n</code> 不是 CFL，但是 CSG</td>
+</tr>
+<tr>
+<td>上下文相关文法 (Type‑1)</td>
+<td>⊂ 递归可枚举文法 (Type‑0)</td>
+<td><code>a^n b^n c^n</code> 可用规则 <code>a A b → a a A b b</code> 生成</td>
+</tr>
+<tr>
+<td>递归可枚举文法 (Type‑0)</td>
+<td>&#x3D; 所有可计算语言</td>
+<td>图灵机可模拟的任意语言</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意</strong>：正则文法是 <strong>最强的可用有限状态机</strong> 能识别的语言，而 <strong>CFG</strong> 需要 <strong>栈</strong>（push‑down automaton, PDA）才能实现，这也是二者能力上的根本差别。</p>
+</blockquote>
+<hr>
+<h2 id="8️⃣-如何手动设计一个-CFG？"><a href="#8️⃣-如何手动设计一个-CFG？" class="headerlink" title="8️⃣ 如何手动设计一个 CFG？"></a>8️⃣ 如何手动设计一个 CFG？</h2><ol>
+<li><strong>明确语言的结构</strong>  <ul>
+<li>列举<strong>基本构件</strong>（表达式、语句、块、标识符等）。</li>
+</ul>
+</li>
+<li><strong>划分层次</strong>（把大的结构拆成若干子结构）  <ul>
+<li>例：<code>Program → StmtList</code>、<code>StmtList → Stmt StmtList | ε</code>。</li>
+</ul>
+</li>
+<li><strong>写出产生式</strong>，确保左侧始终是单个非终结符。  </li>
+<li><strong>消除左递归</strong>（如果要用 LL 解析）  <ul>
+<li><code>A → A α | β</code> → <code>A → β A&#39; ; A&#39; → α A&#39; | ε</code>。</li>
+</ul>
+</li>
+<li><strong>左因子化</strong>（消除同一前缀的冲突）  <ul>
+<li><code>A → α β1 | α β2</code> → <code>A → α A&#39; ; A&#39; → β1 | β2</code>。</li>
+</ul>
+</li>
+<li><strong>检查二义性</strong>（手工构造或使用工具）  <ul>
+<li>若出现<strong>不同的解析树</strong>，考虑重新设计或使用 <strong>优先级&#x2F;结合性</strong> 标记。</li>
+</ul>
+</li>
+<li><strong>转化为标准形式（可选）</strong>  <ul>
+<li><strong>CNF</strong>（Chomsky Normal Form）或 <strong>GNF</strong>（Greibach Normal Form）用于某些算法（如 CYK）。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>工具推荐</strong>：  </p>
+<ul>
+<li><strong>ANTLR</strong>（生成 LL(*) 解析器）  </li>
+<li><strong>Bison&#x2F;Yacc</strong>（LR&#x2F;LALR）  </li>
+<li><strong>EarleyParser</strong>（Python <code>earley</code> 包）  </li>
+<li><strong>JFlex + CUP</strong>（Java 组合）</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="9️⃣-小结-——-CFG-的核心要点"><a href="#9️⃣-小结-——-CFG-的核心要点" class="headerlink" title="9️⃣ 小结 —— CFG 的核心要点"></a>9️⃣ 小结 —— CFG 的核心要点</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>定义</strong></td>
+<td><code>G = (V, Σ, R, S)</code>；每条产生式左侧只能是单个非终结符</td>
+</tr>
+<tr>
+<td><strong>生成能力</strong></td>
+<td>与 <strong>压栈自动机 (PDA)</strong> 等价；可以描述嵌套结构（如括号匹配、递归表达式）</td>
+</tr>
+<tr>
+<td><strong>常用形式</strong></td>
+<td>BNF、EBNF、BNF++（用于语言规范）</td>
+</tr>
+<tr>
+<td><strong>解析算法</strong></td>
+<td>LL(1) → 手写；LR&#x2F;LALR → Yacc&#x2F;Bison；Earley → 通用；CYK → 成员性检测</td>
+</tr>
+<tr>
+<td><strong>局限</strong></td>
+<td>不能表达交叉依赖（如 <code>a^n b^n c^n</code>），对交、补不闭合</td>
+</tr>
+<tr>
+<td><strong>应用</strong></td>
+<td>编译器前端、解释器、配置文件、XML&#x2F;HTML、部分自然语言子集、教学语言</td>
+</tr>
+<tr>
+<td><strong>与其他文法的关系</strong></td>
+<td>正则 ⊂ CFL ⊂ CSG ⊂ RE（递归可枚举）</td>
+</tr>
+</tbody></table>
+<hr>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2026/04/01/ResNet%E6%A8%A1%E5%9E%8B/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/AI%E7%9F%A5%E8%AF%86/">
+                    AI知识
+                </a>
+            </div>
+            <h5>
+                <a href="/2026/04/01/ResNet%E6%A8%A1%E5%9E%8B/" class="trm-anima-link">
+                    ResNet模型
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/04/01</li>
+                <li>11:45</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+    <div id="giscus-wrap" class="trm-card trm-scroll-animation comment-container"></div>
+<script data-swup-reload-script>
+    function loadGiscus() {
+        let nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const config = {
+            src: 'https://giscus.app/client.js',
+            "data-repo": 'luchen022/luchen022.github.io',
+            "data-repo-id": 'R_kgDORTg4kg',
+            "data-category": 'Announcements',
+            "data-category-id": 'DIC_kwDORTg4ks4C223u',
+            "data-mapping": 'title',
+            "data-reactions-enabled": '1',
+            "data-emit-metadata": '0',
+            "data-theme": nowTheme,
+            "data-lang": 'zh-CN',
+            crossorigin: "anonymous",
+            async: true
+        }
+        let ele = document.createElement('script')
+        for (let key in config) {
+            ele.setAttribute(key, config[key])
+        }
+        document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin', ele)
+    }
+
+    function changeGiscusTheme() {
+        let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+            setConfig: {
+                theme: theme
+            }
+        });
+    }
+
+    loadGiscus();
+</script>
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v8.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.7
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="文法概览与上下文无关文法（CFG）详解"><a rel="nofollow" class="trm-toc-link" href="#文法概览与上下文无关文法（CFG）详解"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">文法概览与上下文无关文法（CFG）详解</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="1️⃣ 语法（Grammar）到底是什么？"><a rel="nofollow" class="trm-toc-link" href="#1️⃣-语法（Grammar）到底是什么？"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">1️⃣ 语法（Grammar）到底是什么？</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2️⃣ 文法的层次——Chomsky 层级"><a rel="nofollow" class="trm-toc-link" href="#2️⃣-文法的层次——Chomsky-层级"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">2️⃣ 文法的层次——Chomsky 层级</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3️⃣ 什么是上下文无关文法（CFG）？"><a rel="nofollow" class="trm-toc-link" href="#3️⃣-什么是上下文无关文法（CFG）？"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">3️⃣ 什么是上下文无关文法（CFG）？</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="3.1 正式定义"><a rel="nofollow" class="trm-toc-link" href="#3-1-正式定义"><span class="trm-toc-number">1.3.1.</span> <span class="trm-toc-text">3.1 正式定义</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.2 推导方式"><a rel="nofollow" class="trm-toc-link" href="#3-2-推导方式"><span class="trm-toc-number">1.3.2.</span> <span class="trm-toc-text">3.2 推导方式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.3 语法树（Parse Tree &#x2F; Derivation Tree）"><a rel="nofollow" class="trm-toc-link" href="#3-3-语法树（Parse-Tree-Derivation-Tree）"><span class="trm-toc-number">1.3.3.</span> <span class="trm-toc-text">3.3 语法树（Parse Tree &#x2F; Derivation Tree）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="4️⃣ CFG 的实例"><a rel="nofollow" class="trm-toc-link" href="#4️⃣-CFG-的实例"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">4️⃣ CFG 的实例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="4.1 基本算术表达式文法（最常见示例）"><a rel="nofollow" class="trm-toc-link" href="#4-1-基本算术表达式文法（最常见示例）"><span class="trm-toc-number">1.4.1.</span> <span class="trm-toc-text">4.1 基本算术表达式文法（最常见示例）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.2 BNF（巴克斯-诺尔范式）写法"><a rel="nofollow" class="trm-toc-link" href="#4-2-BNF（巴克斯-诺尔范式）写法"><span class="trm-toc-number">1.4.2.</span> <span class="trm-toc-text">4.2 BNF（巴克斯-诺尔范式）写法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.3 其他常见 CFG 示例"><a rel="nofollow" class="trm-toc-link" href="#4-3-其他常见-CFG-示例"><span class="trm-toc-number">1.4.3.</span> <span class="trm-toc-text">4.3 其他常见 CFG 示例</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="5️⃣ CFG 的关键性质"><a rel="nofollow" class="trm-toc-link" href="#5️⃣-CFG-的关键性质"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">5️⃣ CFG 的关键性质</span></a></li><li class="trm-toc-item trm-toc-level-2" title="6️⃣ CFG 的解析技术（Parsing Algorithms）"><a rel="nofollow" class="trm-toc-link" href="#6️⃣-CFG-的解析技术（Parsing-Algorithms）"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">6️⃣ CFG 的解析技术（Parsing Algorithms）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="7️⃣ CFG 与其他层次文法的关系"><a rel="nofollow" class="trm-toc-link" href="#7️⃣-CFG-与其他层次文法的关系"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">7️⃣ CFG 与其他层次文法的关系</span></a></li><li class="trm-toc-item trm-toc-level-2" title="8️⃣ 如何手动设计一个 CFG？"><a rel="nofollow" class="trm-toc-link" href="#8️⃣-如何手动设计一个-CFG？"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">8️⃣ 如何手动设计一个 CFG？</span></a></li><li class="trm-toc-item trm-toc-level-2" title="9️⃣ 小结 —— CFG 的核心要点"><a rel="nofollow" class="trm-toc-link" href="#9️⃣-小结-——-CFG-的核心要点"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">9️⃣ 小结 —— CFG 的核心要点</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.7"></script>
+    
+
+    
+        
+<script src="https://npm.elemecdn.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.7"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.7"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
