@@ -4,6 +4,138 @@
   
     
     <entry>
+      <title>多模态知识图谱增强具身智能</title>
+      <link href="/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A2%9E%E5%BC%BA%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/"/>
+      <url>/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A2%9E%E5%BC%BA%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Scene-Driven-Multimodal-Knowledge-Graph-Construction-for-Embodied-AI"><a href="#Scene-Driven-Multimodal-Knowledge-Graph-Construction-for-Embodied-AI" class="headerlink" title="Scene-Driven Multimodal Knowledge Graph Construction for Embodied AI"></a>Scene-Driven Multimodal Knowledge Graph Construction for Embodied AI</h1><p><img src="/img/%E5%9C%BA%E6%99%AF%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1.png" alt="场景知识图谱"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p><h2 id="一、基础信息"><a href="#一、基础信息" class="headerlink" title="一、基础信息"></a>一、基础信息</h2><ul><li>论文标题：Scene-Driven Multimodal Knowledge Graph Construction for Embodied AI</li><li>发表期刊：<strong>IEEE Transactions on Knowledge and Data Engineering (TKDE)</strong></li><li>期刊评价：<strong>CCF A类、中科院1区Top、JCR Q1，数据&#x2F;知识工程顶刊</strong>，学术认可度极高</li><li>发表时间：2024年11月</li><li>作者单位：复旦大学、之江实验室、香港科技大学</li><li>核心标签：具身智能、多模态知识图谱、场景驱动、机器人知识增强</li></ul><hr><h2 id="二、论文解决的核心问题"><a href="#二、论文解决的核心问题" class="headerlink" title="二、论文解决的核心问题"></a>二、论文解决的核心问题</h2><ol><li><strong>通用知识库缺陷</strong>：稀疏、粒度粗、缺场景细节、无多模态，不适合机器人</li><li><strong>大模型参数知识缺陷</strong>：幻觉、不可靠、难维护、不可解释、难实时纠错</li><li><strong>具身智能刚需</strong>：机器人需要<strong>场景专属、可解释、可纠错、图文结合</strong>的外部常识</li></ol><hr><h2 id="三、整体思路"><a href="#三、整体思路" class="headerlink" title="三、整体思路"></a>三、整体思路</h2><ol><li>提出<strong>场景驱动多模态知识图谱（Scene-MMKG）</strong>：专为机器人定制、单场景聚焦、文本+图像融合</li><li>构建流程：<strong>LLM提示生成Schema → 通用+场景知识填充 → 分层聚合优化</strong></li><li>落地应用：做<strong>机器人版多模态RAG</strong>，把图谱注入导航、操作任务，提升决策能力</li></ol><hr><h2 id="四、核心方法"><a href="#四、核心方法" class="headerlink" title="四、核心方法"></a>四、核心方法</h2><h3 id="1-基于提示的模式设计"><a href="#1-基于提示的模式设计" class="headerlink" title="1. 基于提示的模式设计"></a>1. 基于提示的模式设计</h3><ul><li>输入：场景描述（如“卧室”）</li><li>LLM零样本提取：物体、类别、关系</li><li>概念扩展+聚类：自动生成场景知识框架</li></ul><h3 id="2-Knowledge-Population"><a href="#2-Knowledge-Population" class="headerlink" title="2. Knowledge Population"></a>2. Knowledge Population</h3><ul><li>通用知识：从ConceptNet等库<strong>自动抽取</strong>常识</li><li>场景专属知识：LLM生成+少量人工校对，补充位置、用法、操作规则</li><li>多模态：给实体<strong>配图</strong>（标准图+场景图），同一实体带文本+图像两种信息</li></ul><h3 id="3-Quality-Control-and-Refinement"><a href="#3-Quality-Control-and-Refinement" class="headerlink" title="3. Quality Control and Refinement"></a>3. Quality Control and Refinement</h3><ul><li><strong>Hierarchicalization（分层）</strong>：实体→部件→属性，结构更清晰</li><li><strong>Aggregation（聚合）</strong>：语义相似属性合并，去冗余、解决长尾</li><li>全程：<strong>算法自动执行，人工仅定规则+校验</strong></li></ul><hr><h2 id="五、知识增强模型"><a href="#五、知识增强模型" class="headerlink" title="五、知识增强模型"></a>五、知识增强模型</h2><h3 id="核心逻辑-机器人多模态RAG"><a href="#核心逻辑-机器人多模态RAG" class="headerlink" title="核心逻辑 &#x3D; 机器人多模态RAG"></a>核心逻辑 &#x3D; 机器人<strong>多模态RAG</strong></h3><ol><li><strong>Scene Knowledge Retrieval（SKR）</strong>：根据指令&#x2F;观测检索图谱知识</li><li><strong>Multimodal Denoising</strong>：过滤无关图像&#x2F;文本，保留当前场景有效信息</li><li><strong>Knowledge Encoding</strong>：GCN编码，供模型决策使用</li></ol><h3 id="两大落地任务"><a href="#两大落地任务" class="headerlink" title="两大落地任务"></a>两大落地任务</h3><ul><li><strong>VLN（视觉语言导航）</strong>：对应移动能力，靠图谱找路、找目标</li><li><strong>3D Object Language Grounding</strong>：对应操作能力，靠图谱精准识别、定位物体</li></ul><hr><h2 id="六、实例与实验"><a href="#六、实例与实验" class="headerlink" title="六、实例与实验"></a>六、实例与实验</h2><ul><li>实例图谱：<strong>ManipMob-MMKG</strong>（室内场景，兼顾操作+移动）</li><li>实验结论：<ul><li>建库成本低、效率高</li><li>导航SPL、物体定位准确率显著优于通用KG与大模型参数知识</li><li>多模态 &gt; 单模态，去噪与优化有效</li></ul></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多模态知识图谱增强多模态大模型</title>
+      <link href="/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A2%9E%E5%BC%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A2%9E%E5%BC%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MR-MKG"><a href="#MR-MKG" class="headerlink" title="MR-MKG"></a>MR-MKG</h1><p><img src="/img/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A2%9E%E5%BC%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%A1%86%E6%9E%B6.png" alt="多模态知识图谱增强多模态大模型框架"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p><h2 id="一、基础信息"><a href="#一、基础信息" class="headerlink" title="一、基础信息"></a>一、基础信息</h2><ul><li><strong>论文标题</strong>：Multimodal Reasoning with Multimodal Knowledge Graph (MR-MKG)</li><li><strong>发表会议</strong>：ACL 2024</li><li><strong>核心任务</strong>：多模态问答（ScienceQA）、多模态类比推理（MARS）</li><li><strong>核心标签</strong>：多模态大模型、知识图谱增强、RAG、轻量适配器、跨模态对齐</li></ul><hr><h2 id="二、论文解决的问题"><a href="#二、论文解决的问题" class="headerlink" title="二、论文解决的问题"></a>二、论文解决的问题</h2><ol><li>多模态大模型（LLaVA、BLIP-2等）存在<strong>幻觉、知识陈旧&#x2F;不足</strong></li><li>传统**文本知识图谱（KG）**只有文字，无视觉信息，<strong>无法支撑跨模态推理</strong></li><li>现有知识增强方案<strong>参数大、训练成本高</strong>，图文与知识未统一空间</li></ol><hr><h2 id="三、整体思路"><a href="#三、整体思路" class="headerlink" title="三、整体思路"></a>三、整体思路</h2><p><strong>用外部多模态知识图谱（MMKG）提供图文知识 → 检索相关子图 → 编码为向量 → 对齐到LLM文本空间 → 拼接输入LLM推理 → 用跨模态对齐优化效果</strong></p><p>轻量、无全量微调、解决幻觉、提升多模态推理精度</p><hr><h2 id="四、方法总流程"><a href="#四、方法总流程" class="headerlink" title="四、方法总流程"></a>四、方法总流程</h2><ol><li><strong>分别编码</strong><ul><li>文本（问题）→ 语言编码器 → 文本向量</li><li>图片 → 视觉编码器 → 图片向量</li><li>MMKG子图 → RGAT（一种GNN）图编码器 → 知识向量</li></ul></li><li><strong>适配器对齐</strong><ul><li>图片向量 → 视觉适配器 → 文本空间</li><li>知识向量 → 知识适配器 → 文本空间</li></ul></li><li><strong>拼接输入LLM</strong><ul><li>文本向量 + 对齐后图片向量 + 对齐后知识向量 → 送入LLM</li></ul></li><li><strong>跨模态对齐训练</strong><ul><li>在MMKG内部做：图片实体 ↔ 文本实体匹配</li><li>用Triplet Loss拉近对应、拉远不对应，让三者空间统一</li></ul></li></ol><hr><h2 id="五、模型详细结构"><a href="#五、模型详细结构" class="headerlink" title="五、模型详细结构"></a>五、模型详细结构</h2><h3 id="1-Language-Encoder"><a href="#1-Language-Encoder" class="headerlink" title="1. Language Encoder"></a>1. Language Encoder</h3><ul><li>直接用LLM的词嵌入层（FLAN-T5&#x2F;LLaMA-2）</li><li><strong>全程冻结</strong></li></ul><h3 id="2-Visual-Encoder"><a href="#2-Visual-Encoder" class="headerlink" title="2. Visual Encoder"></a>2. Visual Encoder</h3><ul><li>用CLIP的ViT</li><li>输出图片特征 → 经线性层+单头注意力 → 适配文本空间</li><li><strong>全程冻结</strong></li></ul><h3 id="3-KG-Encoder"><a href="#3-KG-Encoder" class="headerlink" title="3. KG Encoder"></a>3. KG Encoder</h3><ul><li>输入：从MMKG检索的<strong>相关子图</strong>（Top10~20三元组）</li><li>模型：<strong>RGAT（关系图注意力网络）</strong></li><li>作用：把图结构（实体+关系+图片）编码成知识节点向量</li></ul><h3 id="4-Knowledge-Adapter-Visual-Adapter"><a href="#4-Knowledge-Adapter-Visual-Adapter" class="headerlink" title="4. Knowledge Adapter + Visual Adapter"></a>4. Knowledge Adapter + Visual Adapter</h3><ul><li>两个小线性层+注意力</li><li>作用：把<strong>图片、知识向量映射到LLM词嵌入空间</strong></li><li>仅训练这部分，参数极小（≈LLM的2.25%）</li></ul><h3 id="5-Cross-Modal-Alignment"><a href="#5-Cross-Modal-Alignment" class="headerlink" title="5. Cross-Modal Alignment"></a>5. Cross-Modal Alignment</h3><ul><li>任务：MMKG中随机选图片实体，匹配对应文本实体</li><li>损失：<strong>Triplet Loss（三元组损失）</strong></li><li>目标：让图文知识在同一空间，减少歧义、提升匹配精度</li></ul><hr><h2 id="六、训练方式"><a href="#六、训练方式" class="headerlink" title="六、训练方式"></a>六、训练方式</h2><ol><li><strong>两阶段训练</strong><ul><li>预训练：在MMKG-grounded数据集上学基础图文知识</li><li>微调：在ScienceQA&#x2F;MARS上做任务微调</li></ul></li><li><strong>损失函数</strong><ul><li>生成损失Lg：LLM正常回答损失</li><li>对齐损失La：跨模态匹配损失</li><li>总损失：L &#x3D; Lg + λLa</li></ul></li><li><strong>核心特点</strong><ul><li>冻结LLM + 冻结视觉编码器</li><li>仅训练适配器、RGAT、对齐层 → <strong>超轻量、低成本</strong></li></ul></li></ol><hr><h2 id="七、关键要点"><a href="#七、关键要点" class="headerlink" title="七、关键要点"></a>七、关键要点</h2><ol><li><strong>不是全图输入</strong>，每次只取<strong>相关小子图</strong>（≈10条三元组）</li><li><strong>不是输入字符串</strong>，是<strong>拼接向量</strong>直接进LLM嵌入层</li><li><strong>本质是多模态知识增强RAG</strong>，但用结构化MMKG而非文本库</li><li><strong>创新不在发明算法</strong>，而在：<ul><li>首次将<strong>MMKG内部图文实体对齐</strong>用于LLM多模态推理</li><li>超轻量参数训练仍达到SOTA</li></ul></li></ol><hr><h2 id="八、核心效果"><a href="#八、核心效果" class="headerlink" title="八、核心效果"></a>八、核心效果</h2><ul><li>ScienceQA：超过LLaVA、MM-CoT等SOTA，平均精度↑1.95%</li><li>MARS：Hits@1↑10.4%</li><li>仅训练≈2.25% LLM参数，训练成本极低</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多模态知识图谱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多模态知识图谱药物作用预测</title>
+      <link href="/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%8D%AF%E7%89%A9%E4%BD%9C%E7%94%A8%E9%A2%84%E6%B5%8B/"/>
+      <url>/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%8D%AF%E7%89%A9%E4%BD%9C%E7%94%A8%E9%A2%84%E6%B5%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MKG-FENN"><a href="#MKG-FENN" class="headerlink" title="MKG-FENN"></a>MKG-FENN</h1><p><img src="/img/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%8D%AF%E7%89%A9%E4%BD%9C%E7%94%A8%E9%A2%84%E6%B5%8B.png" alt="多模态知识图谱药物作用预测"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p><h2 id="一、基础信息"><a href="#一、基础信息" class="headerlink" title="一、基础信息"></a>一、基础信息</h2><ul><li>论文标题：MKG-FENN: A Multimodal Knowledge Graph Fused End-to-End Neural Network for Accurate Drug–Drug Interaction Prediction</li><li>发表会议：<strong>AAAI 2024</strong>（CCF-A类人工智能顶会）</li><li>核心任务：<strong>药物-药物相互作用（DDI）预测</strong>（65种交互类型多分类）</li><li>代码地址：<a href="https://github.com/wudi1989/MKG-FENN">https://github.com/wudi1989/MKG-FENN</a></li></ul><hr><h2 id="二、论文解决的问题"><a href="#二、论文解决的问题" class="headerlink" title="二、论文解决的问题"></a>二、论文解决的问题</h2><ol><li>联合用药易产生有害DDI，需精准预测。</li><li>现有方法缺陷：<ul><li>只利用<strong>部分药物信息</strong>，未全面融合多维度关联。</li><li>采用<strong>非端到端框架</strong>，特征提取与融合不充分。</li><li>未充分利用药物、靶点、酶、分子结构等复杂关联。</li></ul></li></ol><hr><h2 id="三、整体思路"><a href="#三、整体思路" class="headerlink" title="三、整体思路"></a>三、整体思路</h2><p>构建<strong>4个多模态药物知识图谱</strong> → 用<strong>四通道GNN</strong>分别提取特征 → <strong>拼接融合</strong> → 端到端MLP预测DDI。</p><hr><h2 id="四、模型方法"><a href="#四、模型方法" class="headerlink" title="四、模型方法"></a>四、模型方法</h2><h3 id="1-Multimodal-Knowledge-Graph"><a href="#1-Multimodal-Knowledge-Graph" class="headerlink" title="1. Multimodal Knowledge Graph"></a>1. Multimodal Knowledge Graph</h3><h4 id="（1）构建4个知识图谱（全部基于公开数据，转为三元组）"><a href="#（1）构建4个知识图谱（全部基于公开数据，转为三元组）" class="headerlink" title="（1）构建4个知识图谱（全部基于公开数据，转为三元组）"></a>（1）构建4个知识图谱（全部基于公开数据，转为三元组）</h4><ol><li><strong>药物-化学实体</strong><ul><li>来源：DrugBank</li><li>实体：靶点、酶、转运体、蛋白</li><li>三元组：&lt;药物，功能关系，化学实体&gt;</li></ul></li><li><strong>药物-子结构</strong><ul><li>来源：SMILES序列</li><li>实体：分子子结构</li><li>三元组：&lt;药物，包含，子结构&gt;</li></ul></li><li><strong>药物-药物</strong><ul><li>来源：DDI交互矩阵</li><li>实体：另一种药物</li><li>三元组：&lt;药物A，交互类型，药物B&gt;</li></ul></li><li><strong>药物-MACCS分子结构</strong><ul><li>来源：MACCS分子指纹</li><li>实体：分子结构特征</li><li>三元组：&lt;药物，数量，分子特征&gt;</li></ul></li></ol><h4 id="（2）四通道GNN特征提取"><a href="#（2）四通道GNN特征提取" class="headerlink" title="（2）四通道GNN特征提取"></a>（2）四通道GNN特征提取</h4><ul><li>每个图谱独立走一个GNN通道。</li><li>初始向量：<strong>实体ID随机初始化</strong>。</li><li>GNN作用：让节点<strong>吸收邻居与关系信息</strong>，更新得到更有意义的向量。</li><li>输出：<strong>一个药物 → 4个不同维度的特征向量</strong>。</li></ul><hr><h3 id="2-Fused-End-to-End-Neural-Network（FENN，端到端融合网络）"><a href="#2-Fused-End-to-End-Neural-Network（FENN，端到端融合网络）" class="headerlink" title="2. Fused End-to-End Neural Network（FENN，端到端融合网络）"></a>2. Fused End-to-End Neural Network（FENN，端到端融合网络）</h3><h4 id="（1）多模态特征融合"><a href="#（1）多模态特征融合" class="headerlink" title="（1）多模态特征融合"></a>（1）多模态特征融合</h4><ul><li>操作：<strong>直接拼接</strong>4个通道的药物向量。</li><li>公式：$\hat{E}_d &#x3D; E_d^1 \oplus E_d^2 \oplus E_d^3 \oplus E_d^4$</li><li>结果：得到<strong>单一综合药物向量</strong>。</li></ul><h4 id="（2）MLP预测DDI"><a href="#（2）MLP预测DDI" class="headerlink" title="（2）MLP预测DDI"></a>（2）MLP预测DDI</h4><ol><li>拼接待预测的<strong>两个药物综合向量</strong>。</li><li>送入多层MLP，输出65类DDI的概率。</li><li>取最大概率类别为预测结果。</li></ol><h4 id="（3）训练配置"><a href="#（3）训练配置" class="headerlink" title="（3）训练配置"></a>（3）训练配置</h4><ul><li>损失函数：<strong>交叉熵损失</strong>（多分类标准）</li><li>优化器：<strong>Adam</strong></li><li>防过拟合：Dropout、Batch Norm、L2正则</li><li>超参：嵌入维度128，邻域采样数6，学习率0.01</li></ul><hr><h2 id="五、实验结论"><a href="#五、实验结论" class="headerlink" title="五、实验结论"></a>五、实验结论</h2><ul><li>在<strong>已知药物、已知+新药、全新药</strong>三个任务上，<strong>全面优于SOTA模型</strong>。</li><li>消融实验证明：<strong>4个通道融合效果最好</strong>，单通道&#x2F;少通道性能下降。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 知识图谱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图神经网络</title>
+      <link href="/2026/04/08/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+      <url>/2026/04/08/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="GNN-核心总结"><a href="#GNN-核心总结" class="headerlink" title="GNN 核心总结"></a>GNN 核心总结</h1><h2 id="1-是什么"><a href="#1-是什么" class="headerlink" title="1. 是什么"></a>1. 是什么</h2><p><strong>GNN &#x3D; Graph Neural Network 图神经网络</strong></p><p>专门处理<strong>图结构数据</strong>（节点+边+关系）的深度学习模型，核心是：<strong>让节点聚合邻居信息，学习节点&#x2F;图的特征表示</strong>。</p><p>GNN 就是<strong>给图数据设计的神经网络</strong>，用现成库可以<strong>极其方便地让节点吸收邻居信息</strong>。</p><h2 id="2-成熟度"><a href="#2-成熟度" class="headerlink" title="2. 成熟度"></a>2. 成熟度</h2><ul><li>理论、模型、工具链<strong>非常成熟</strong></li><li>工业界大量落地（推荐、风控、知识图谱、分子预测等）</li><li>开箱即用，无需从零实现图卷积&#x2F;消息传递</li></ul><h2 id="3-你关心的核心能力"><a href="#3-你关心的核心能力" class="headerlink" title="3. 你关心的核心能力"></a>3. 你关心的核心能力</h2><ul><li>每个节点自动<strong>吸收邻居信息</strong>（消息传递机制）</li><li>可轻松指定<strong>特定类型节点</strong>做聚合</li><li>支持 1 跳&#x2F;多跳邻居、加权&#x2F;注意力聚合、异构图等</li></ul><h2 id="4-主流易用库"><a href="#4-主流易用库" class="headerlink" title="4. 主流易用库"></a>4. 主流易用库</h2><ul><li><strong>PyTorch Geometric (PyG)</strong>：最常用、上手最快</li><li><strong>DGL</strong>：适合大规模图、工业部署</li><li>两者都只需几行代码实现邻居信息聚合</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 知识图谱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多模态知识图谱RAG增强大模型</title>
+      <link href="/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1RAG%E5%A2%9E%E5%BC%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1RAG%E5%A2%9E%E5%BC%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="论文完整整理"><a href="#论文完整整理" class="headerlink" title="论文完整整理"></a>论文完整整理</h1><h2 id="一、基础信息"><a href="#一、基础信息" class="headerlink" title="一、基础信息"></a>一、基础信息</h2><ul><li>论文标题：Augmenting general-purpose large-language models with domain-specific multimodal knowledge graph for question-answering in construction project management</li><li>期刊：<strong>Advanced Engineering Informatics</strong></li><li>发表时间：2025年</li><li>核心对象：建设工程项目管理问答（CPM-QA）</li><li>核心技术：多模态知识图谱（CPM-KG）+ RAG + 通用大模型（GLM）</li><li>数据集：2435题中国注册建造师考试（CRCEE）试题</li><li>开源：CPM-KG、测试集、代码均公开</li></ul><hr><h2 id="二、论文解决的问题"><a href="#二、论文解决的问题" class="headerlink" title="二、论文解决的问题"></a>二、论文解决的问题</h2><ol><li><strong>CPM-QA知识库缺陷</strong>：规模小、仅文本、无多模态</li><li><strong>传统模型能力弱</strong>：规则&#x2F;小模型无法处理全领域复杂问答</li><li><strong>大模型短板</strong>：无领域专业知识、易幻觉、不可更新规范</li><li><strong>无统一基准</strong>：缺少公开可对比的CPM问答测试集</li></ol><hr><h2 id="三、整体思路"><a href="#三、整体思路" class="headerlink" title="三、整体思路"></a>三、整体思路</h2><p>用<strong>多模态CPM知识图谱</strong>增强通用大模型，基于RAG实现外部知识注入，在建造师考试问答上大幅提升准确率，并提供可复用的知识库与基准测试集。</p><hr><h2 id="四、核心方法"><a href="#四、核心方法" class="headerlink" title="四、核心方法"></a>四、核心方法</h2><h3 id="1-多模态CPM-KG构建（Method-3-1）"><a href="#1-多模态CPM-KG构建（Method-3-1）" class="headerlink" title="1. 多模态CPM-KG构建（Method 3.1）"></a>1. 多模态CPM-KG构建（Method 3.1）</h3><h4 id="（1）概念层"><a href="#（1）概念层" class="headerlink" title="（1）概念层"></a>（1）概念层</h4><ul><li>5类节点：一级领域、二级领域、三级领域、文档、文档内容</li><li>3类关系：has subfield of、involves、contains</li><li>4类三元组：领域层级&#x2F;领域-文档&#x2F;文档-内容</li></ul><h4 id="（2）实例层"><a href="#（2）实例层" class="headerlink" title="（2）实例层"></a>（2）实例层</h4><ul><li>知识体系：1级→7个二级→<strong>36个三级</strong>CPM子领域</li><li>文档：195份规范&#x2F;法规&#x2F;教材，约<strong>260万字</strong></li><li>多模态：339张工程图→存URL，文本插入标记</li><li>最终三元组：<ul><li>242个：[三级领域, involves, 文档]</li><li>1375个：[文档, contains, 文档内容]</li></ul></li></ul><h4 id="（3）存储与规模"><a href="#（3）存储与规模" class="headerlink" title="（3）存储与规模"></a>（3）存储与规模</h4><ul><li>数据库：Neo4j-v5</li><li>规模：1602节点、1696边、纯文本存储、图片仅存URL</li><li>无同级节点相连，仅上下级层级关联</li></ul><hr><h3 id="2-基于RAG的三阶段融合"><a href="#2-基于RAG的三阶段融合" class="headerlink" title="2. 基于RAG的三阶段融合"></a>2. 基于RAG的三阶段融合</h3><h4 id="阶段1：CPM-KG向量化"><a href="#阶段1：CPM-KG向量化" class="headerlink" title="阶段1：CPM-KG向量化"></a>阶段1：CPM-KG向量化</h4><ul><li>从Neo4j取出三元组→拼接为<strong>纯文本串</strong></li><li>文本切块：250词&#x2F;块，重叠50词</li><li>向量模型：Dmeta-embedding-zh</li><li>输出：知识向量库</li></ul><h4 id="阶段2：问题相关知识检索"><a href="#阶段2：问题相关知识检索" class="headerlink" title="阶段2：问题相关知识检索"></a>阶段2：问题相关知识检索</h4><ul><li>用户问题→同模型转向量</li><li>余弦相似度匹配→召回<strong>Top3</strong>相关知识片段</li></ul><h4 id="阶段3：构造Prompt输入大模型"><a href="#阶段3：构造Prompt输入大模型" class="headerlink" title="阶段3：构造Prompt输入大模型"></a>阶段3：构造Prompt输入大模型</h4><ul><li>分单选&#x2F;多选题设计模板</li><li>格式：指令 + 检索知识 + 问题</li><li>输入8种大模型：GPT-4-turbo、ERNIE-Bot 4.0、ChatGLM3等</li></ul><hr><h3 id="3-测试集构建"><a href="#3-测试集构建" class="headerlink" title="3. 测试集构建"></a>3. 测试集构建</h3><ul><li>来源：2013–2023年CRCEE一建&#x2F;二建试题</li><li>规模：2435道多选题，标注：年份、级别、子领域、单&#x2F;多选、是否含图</li><li>格式：CSV&#x2F;JSON，公开可复用</li></ul><hr><h3 id="4-评估方法"><a href="#4-评估方法" class="headerlink" title="4. 评估方法"></a>4. 评估方法</h3><ul><li>指标：准确率AR、精确率、召回率、F1</li><li>评分：沿用官方考试计分</li><li>统计检验：Wilcoxon符号秩检验</li></ul><hr><h2 id="五、关键结果"><a href="#五、关键结果" class="headerlink" title="五、关键结果"></a>五、关键结果</h2><ol><li>平均准确率<strong>提升30.0%</strong></li><li>最优模型（ERNIE-Bot 4.0&#x2F;GPT-4系列）<strong>通过建造师考试</strong></li><li>多模态KG优于纯文本KG</li><li>对多选题、图文题提升更显著</li></ol><hr><h2 id="六、核心贡献"><a href="#六、核心贡献" class="headerlink" title="六、核心贡献"></a>六、核心贡献</h2><ol><li>提出<strong>KG+RAG+大模型</strong>的CPM-QA框架</li><li>构建<strong>多模态、可复用</strong>的CPM专业知识图谱</li><li>发布<strong>2435题</strong>公开基准测试集</li><li>验证领域知识对大模型工程应用的关键作用</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 知识图谱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多模态知识图谱滚动轴承故障诊断</title>
+      <link href="/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/"/>
+      <url>/2026/04/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="滚动轴承故障诊断"><a href="#滚动轴承故障诊断" class="headerlink" title="滚动轴承故障诊断"></a>滚动轴承故障诊断</h1><p><img src="/img/%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%BD%B4%E6%89%BF%E8%AF%8A%E6%96%AD%E6%B5%81%E7%A8%8B.png" alt="基于知识图谱轴承诊断流程"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p><h2 id="一、论文基础信息"><a href="#一、论文基础信息" class="headerlink" title="一、论文基础信息"></a>一、论文基础信息</h2><ul><li>论文标题：A Rolling Bearing Fault Diagnosis Method Based on Multimodal Knowledge Graph</li><li>期刊：IEEE Transactions on Industrial Informatics</li><li>发表时间：2024年11月</li><li>核心方法：多模态知识图谱MKG + 关系级联图注意力网络RCGAT + 卷积嵌入ConvE</li><li>数据集：7个公开轴承数据集（CWRU、DIRG、MFTP、Ottawa、FEMTO-ST、IMS、XTJU-sy）</li></ul><hr><h2 id="二、论文要解决的问题"><a href="#二、论文要解决的问题" class="headerlink" title="二、论文要解决的问题"></a>二、论文要解决的问题</h2><ol><li>传统故障诊断把<strong>复合故障当成独立新标签</strong>，忽略故障之间的关联关系。</li><li>多数知识图谱只用到<strong>文本数据</strong>，没直接用传感器的<strong>振动信号、频谱</strong>等多模态数据。</li><li>传统图模型只考虑<strong>一阶邻居</strong>，不区分多阶邻居重要性，容易信息过度平滑。</li><li>知识图谱大多只做可视化&#x2F;检索，<strong>没用于推理式故障诊断</strong>。</li></ol><hr><h2 id="三、整体思路"><a href="#三、整体思路" class="headerlink" title="三、整体思路"></a>三、整体思路</h2><p>把<strong>轴承故障诊断转化为多模态知识图谱补全任务</strong>：<br>先从振动信号、频谱、文本描述构建多模态知识图谱，再用RCGAT学习图结构与故障关系，最后用ConvE打分预测故障类型。</p><hr><h2 id="四、方法总流程"><a href="#四、方法总流程" class="headerlink" title="四、方法总流程"></a>四、方法总流程</h2><ol><li><strong>多模态知识图谱MKG构建</strong></li><li><strong>多模态特征融合（LMF）</strong></li><li><strong>RCGAT编码（学习节点与邻居信息）</strong></li><li><strong>ConvE解码（打分预测故障）</strong></li><li><strong>故障诊断输出</strong></li></ol><hr><h2 id="五、详细模型与步骤"><a href="#五、详细模型与步骤" class="headerlink" title="五、详细模型与步骤"></a>五、详细模型与步骤</h2><h3 id="1-多模态知识图谱-MKG-构建"><a href="#1-多模态知识图谱-MKG-构建" class="headerlink" title="1. 多模态知识图谱 MKG 构建"></a>1. 多模态知识图谱 MKG 构建</h3><p><img src="/img/%E8%BD%B4%E6%89%BF%E6%A3%80%E6%B5%8BMKG.png" alt="轴承检测MKG"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br><img src="/img/%E8%BD%B4%E6%89%BF%E8%AF%8A%E6%96%AD%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%A4%BA%E4%BE%8B.png" alt="轴承诊断知识图谱示例"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p><ul><li><strong>节点</strong><ul><li>实体：滑动窗口截取的<strong>振动信号段</strong>（时序数值 + 频谱图）</li><li>值：故障类型、转速、负载、故障直径等</li></ul></li><li><strong>边</strong><ul><li>属性边：信号 → 故障&#x2F;转速&#x2F;直径（属于、发生在、大小为）</li><li>关系边：信号 ↔ 信号（同故障、同转速、同直径）</li></ul></li><li><strong>三元组形式</strong><ul><li>(实体, 关系, 实体)</li><li>(实体, 属性, 值)</li></ul></li><li>数据来源：振动时序、EMD频谱图、数据集文本描述</li></ul><hr><h3 id="2-多模态融合-LMF（低秩多模态融合）"><a href="#2-多模态融合-LMF（低秩多模态融合）" class="headerlink" title="2. 多模态融合 LMF（低秩多模态融合）"></a>2. 多模态融合 LMF（低秩多模态融合）</h3><ul><li>输入模态：数值时序、频谱图（GoogLeNet）、文本（BERT）</li><li>作用：把多模态信息压成一个<strong>节点初始向量</strong></li><li>特点：避免张量爆炸，计算高效</li></ul><hr><h3 id="3-RCGAT-编码器（核心）"><a href="#3-RCGAT-编码器（核心）" class="headerlink" title="3. RCGAT 编码器（核心）"></a>3. RCGAT 编码器（核心）</h3><p>全称：<strong>关系级联图注意力网络</strong><br>作用：给每个节点融合<strong>自身特征 + 邻居信息 + 多阶邻居信息</strong></p><ul><li>① <strong>节点级注意力</strong><br>每层内对不同邻居分配权重，关系不同权重不同。</li><li>② <strong>层级注意力</strong><br>堆叠多层得到1阶、2阶邻居信息，自动给各层加权，防止过平滑。</li><li>③ 输出<br>每个节点的<strong>最终嵌入向量</strong>（含全图结构信息）</li></ul><p>关键点：<br><strong>RCGAT不区分实体&#x2F;属性，一律当作节点与边统一计算。</strong></p><hr><h3 id="4-ConvE-解码器（打分器）"><a href="#4-ConvE-解码器（打分器）" class="headerlink" title="4. ConvE 解码器（打分器）"></a>4. ConvE 解码器（打分器）</h3><p>作用：给定（信号实体，关系，？），预测最可能的故障。</p><ul><li>输入<ol><li>头实体向量 h（RCGAT输出）</li><li>关系向量 r（如“故障位置是”）</li></ol></li><li>步骤<ol><li>h 与 r 拼接</li><li>reshape 成2D矩阵（不是图片，只是数字方块）</li><li>卷积提取交互特征</li><li>压平为向量</li><li>与所有故障实体计算匹配分数</li></ol></li><li>输出<br>所有故障的置信度分数，<strong>最高分即为诊断结果</strong></li></ul><hr><h2 id="六、训练与预测的关键区别"><a href="#六、训练与预测的关键区别" class="headerlink" title="六、训练与预测的关键区别"></a>六、训练与预测的关键区别</h2><h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><ul><li>知识图谱<strong>完整</strong>，故障已知</li><li>模型学习：信号 → 故障的规律</li></ul><h3 id="预测（新未知信号）"><a href="#预测（新未知信号）" class="headerlink" title="预测（新未知信号）"></a>预测（新未知信号）</h3><ol><li>新信号 → 切窗 → 多模态 → 初始向量</li><li>连入旧图谱（只连信号–信号边）</li><li>RCGAT计算新节点向量</li><li>ConvE输入（新向量，关系）→ 打分输出故障</li></ol><hr><h2 id="七、创新点"><a href="#七、创新点" class="headerlink" title="七、创新点"></a>七、创新点</h2><ol><li>首次<strong>直接用振动信号构建多模态知识图谱</strong>做故障诊断。</li><li>用<strong>RCGAT双注意力</strong>捕捉多阶邻居与关系依赖。</li><li>把故障诊断转为<strong>知识图谱补全</strong>，可推理复合故障。</li><li>多模态融合比单一模态精度更高。</li></ol><hr><h2 id="八、实验结论"><a href="#八、实验结论" class="headerlink" title="八、实验结论"></a>八、实验结论</h2><ul><li>在7个轴承数据集上<strong>优于TransE、DisMult、ConvE、RGCN、RGAT</strong></li><li>三元组分类准确率 <strong>&gt;99%</strong></li><li>鲁棒性强，适合复合故障、少样本场景</li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 知识图谱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>文法</title>
       <link href="/2026/04/02/%E6%96%87%E6%B3%95/"/>
       <url>/2026/04/02/%E6%96%87%E6%B3%95/</url>
